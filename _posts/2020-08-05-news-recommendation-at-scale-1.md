@@ -4,12 +4,13 @@ layout: post
 title: "News Recommendation at Scale"
 subtitle: "How We Personalize News At DPG Media"
 date: 2020-08-5 23:45:13 -0400
-background: /img/posts/bayesian-dl-images/Untitled.png # '/img/posts/01.jpg'
+background: /img/posts/news-recommendation/newspapers.jpg # '/img/posts/01.jpg'
 ---
 
 
-Originally posted at [Medium](https://dpgmedia-engineering.medium.com/news-recommendation-at-scale-2ce03bbc4692)
+Originally posted at [Medium](https://dpgmedia-engineering.medium.com/news-recommendation-at-scale-2ce03bbc4692) while working for DPG Media.
 
+# Introduction
 With roughly a thousand news articles published by journalists at DPG Media every day, it is a challenge to bring the right articles to the right readers at the right time. An important role of newspapers is to optimally inform readers, balancing between providing news that interests readers, news that provides alternate views or opinions, and news that editors believe readers have to know about. Welcome to the world of news personalization.
 
 News personalization is a very interesting space, both in terms of engineering and machine learning. It is also very socially relevant due to concerns about filter bubbles and privacy. In this blogpost I will talk about how we use machine learning at DPG Media to get the right content to the right users at the right time. There are many products in which personalization can materialize (e-mail, “for you” sections on websites, etc.). In this post I will discuss news recommendation in the form of personalized push notifications. This illustrates the core concept and currently runs in  production for some of our major news titles.
