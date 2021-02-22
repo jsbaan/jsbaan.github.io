@@ -1,0 +1,26 @@
+title:              Joris Baan
+email:              jsbaan@gmail.com
+description:        ML Engineer with a passion for research, ML, NLP and much more.
+author:             Joris Baan
+baseurl:            "/"
+url:
+
+# Social Profiles
+twitter_username:   jsbaan
+github_username:    AIJoris
+facebook_username:
+instagram_username:
+linkedin_username:  joris-baan-669324b3
+
+# Add your google-analytics ID here to activate google analytics
+google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+
+# Build settings
+markdown:           kramdown
+paginate:           5
+paginate_path:      "/posts/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+  - jekyll-seo-tag
