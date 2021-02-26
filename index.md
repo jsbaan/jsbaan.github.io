@@ -3,6 +3,6 @@ layout: home
 background: '/img/bg-index.jpg'
 ---
 
-Welcome on my website! I am Joris and I am interested in very many things. An important one is research at the intersection of machine learning and language. Some others are probabilistic models, representation learning, interpretability, and hiking. Check the [about](invalid_link) page to learn more about what I do and have done.
+Welcome! I am Joris and I am interested in research at the intersection of machine learning and language. I have worked on compositionality and interpretability, and recently became more interested in probabilistic models such as VAEs and Bayesian DL in the context of NLP. I also like software engineering and hiking. Check the [about](about) page to learn more about what I do and have done.
 
 I occasionally write blogposts. You can find them down below.

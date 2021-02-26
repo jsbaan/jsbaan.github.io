@@ -19,7 +19,7 @@ background: /img/posts/bayesian-dl-images/Untitled.png # '/img/posts/01.jpg'
 
 
 # Preamble <a name="Preamble"></a>
-Bayesian (deep) learning has always intrigued and intimidated me. Perhaps because it leans heavily on probabilistic theory, which can be daunting. I noticed that even though I knew basic probability theory, I had a hard time understanding and connecting that to modern Bayesian deep learning research. The aim of this blogpost is to bridge that gab and provide a comprehensive introduction.
+Bayesian (deep) learning has always intrigued and intimidated me. Perhaps because it leans heavily on probabilistic theory, which can be daunting. I noticed that even though I knew basic probability theory, I had a hard time understanding and connecting that to modern Bayesian deep learning research. The aim of this blogpost is to bridge that gap and provide a comprehensive introduction.
 
 Instead of starting with the basics, I will start with an incredible NeurIPS 2020 paper on Bayesian deep learning and generalization by Andrew Wilson and Pavel Izmailov (NYU) called [Bayesian Deep Learning and a Probabilistic Perspective of Generalization](https://proceedings.neurips.cc/paper/2020/file/322f62469c5e3c7dc3e58f5a4d1ea399-Paper.pdf). This paper serves as a tangible starting point in which we naturally encounter Bayesian concepts in the wild. I hope this makes the Bayesian perspective more concrete and speaks to its relevance.
 

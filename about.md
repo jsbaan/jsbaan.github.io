@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About Me
-description:
+description: "^"
 background: '/img/bg-index.jpg'
 ---
 
