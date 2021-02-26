@@ -4,7 +4,7 @@ title: Publications
 description:
 background: '/img/bg-index.jpg'
 ---
-You can find my google scholar page [here](https://scholar.google.com/citations?user=wYjlvvwAAAAJ&hl=nl&oi=ao).
+Find me on Google Scholar [here](https://scholar.google.com/citations?user=wYjlvvwAAAAJ&hl=nl&oi=ao).
 
 
 [Understanding Multi-Head Attention in Abstractive Summarization](https://arxiv.org/pdf/1911.03898.pdf)  
