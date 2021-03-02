@@ -7,9 +7,6 @@ background: '/img/bg-index.jpg'
 Find me on [Google Scholar](https://scholar.google.com/citations?user=wYjlvvwAAAAJ&hl=nl&oi=ao) here.
 
 
-[Understanding Multi-Head Attention in Abstractive Summarization](https://arxiv.org/pdf/1911.03898.pdf)  
-***Joris Baan***, *Maartje ter Hoeve, Marlies van der Wees, Anne Schuth, Maarten de Rijke*. Arxiv 2020
-
 [Do Transformer Attention Heads Provide Transparency in Abstractive Summarization?](https://arxiv.org/pdf/1907.00570.pdf)  
 ***Joris Baan***, *Maartje ter Hoeve, Marlies van der Wees, Anne Schuth, Maarten de Rijke*. In Proceedings of the SIGIR Workshop FACTS-IR 2019
 

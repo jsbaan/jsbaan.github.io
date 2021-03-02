@@ -20,7 +20,7 @@ background: /img/posts/bayesian-dl-images/Untitled.png # '/img/posts/01.jpg'
     3. [Approximate Predictive Distribution](#Approximate)
 5. [Bayesian Deep Learning](#DeepLearning)
     1. [Recent Approaches to Bayesian Deep Learning](#Recent)
-6. [Circling Back to the paper](#Circling)
+6. [Back to the Paper](#Circling)
     1. [Deep Ensembles are BMA](#Ensembles)
     2. [Combining Deep Ensembles With Bayesian Neural Networks](#Combining)
     3. [Neural Network Priors](#Priors)
@@ -41,31 +41,33 @@ I hope you will walk away not only feeling at least slightly Bayesian, but also 
 
 If your Bayesian is a bit rusty the abstract might seem rather cryptic. The first two sentences are of particular importance to our general understanding of Bayesian DL. The middle part presents three technical contributions. The last two highlighted sentences provide a primer on interesting new insights into mysterious neural network phenomena. I'll cover everything, but first things first. Let's start with the paper's introduction.
 
-![Paper Abstract](/img/posts/bayesian-dl-images/bayesian-dl-abstract.png){: width="500" }
+| ![Paper Abstract](/img/posts/bayesian-dl-images/bayesian-dl-abstract.png){: width="400" } |
+|:--:|
+|  |
 
 An important question in the introduction is how and why neural networks generalize. The authors argue that
 
-> "From a probabilistic perspective, generalization depends largely on two properties, the support and the inductive biases of a model."
+> **"From a probabilistic perspective, generalization depends largely on two properties, the support and the inductive biases of a model."**
 
 Support is the  **range** *of dataset classes* that a model can support. In other words; the range of functions a model can represent, where a function is trying to represent the data generative process. The inductive bias defines how ***good*** a model class is at fitting a specific dataset class (e.g. images, text, numerical features). The authors call this, quite nicely, the "distribution of support". In other words, model class performance (~inductive bias) distributed over the range of all possible datasets (support).
 
 Let's look at the examples the authors provide. A linear function has truncated support as it cannot even represent a quadratic function. An MLP is highly flexible but distributes its support across datasets too evenly to be interesting for many image datasets. A convolutional neural network exhibits a good balance between support and inductive bias for image recognition. Figure 2a illustrates this nicely.
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 2.png){: width="500" }
-
-Support and its distribution (inductive bias) for several model types. [Wilsen et al. (2020)](https://arxiv.org/pdf/2002.08791.pdf) Figure 2a
+|![Cool image](/img/posts/bayesian-dl-images/Untitled 2.png){: width="500" }|
+|:--:|
+| *Support and its distribution (inductive bias) for several model types. [Wilsen et al. (2020)](https://arxiv.org/pdf/2002.08791.pdf) Figure 2a* |
 
 The vertical axis represents what I naively explained as "how good a model is at fitting a specific dataset". It actually is *Bayesian evidence*, or *marginal likelihood*; our first Bayesian concept! We'll dive into it in the next section. Let's first finish our line of thought.
 
 A good model not only needs a large support to be **able** to represent the true solution, but also the right inductive bias to actually **arrive** at that solution. The *Bayesian posterior*, think of it as our model for now, should contract to the right solution due to the right inductive bias. However, the prior hypothesis space should be broad enough such that the true model is functionally possible (broad support). The illustrations below (Figure 2) demonstrate this for the three example models. From left to right we see a CNN in green, linear function in purple, and MLP in pink.
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 3.png){: width="500" }
-
-Illustration of relation between the prior, posterior and true model for model types with varying support and inductive bias. CNN (b), MLP (c) and linear model (d). [Wilsen et al. (2020)](https://arxiv.org/pdf/2002.08791.pdf) Figure 2
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 3.png){: width="500" } |
+|:--:|
+| *Illustration of relation between the prior, posterior and true model for model types with varying support and inductive bias. CNN (b), MLP (c) and linear model (d). [Wilsen et al. (2020)](https://arxiv.org/pdf/2002.08791.pdf) Figure 2*  |
 
 At this point in the introduction, similar to first sentence of the abstract, the authors again stress that
 
-> "The key distinguishing property of a Bayesian approach is **marginalization** instead of **optimization**, where we represent solutions given by all settings of parameters weighted by their posterior probabilities, rather than bet everything on a single setting of parameters."
+> **"The key distinguishing property of a Bayesian approach is marginalization instead of optimization, where we represent solutions given by all settings of parameters weighted by their posterior probabilities, rather than bet everything on a single setting of parameters."**
 
 The time is ripe to dig into marginalization vs optimalization, and broaden our general understanding of the Bayesian approach. We'll touch on terms like the posterior, prior and predictive distribution, the marginal likelihood and bayesian evidence, bayesian model averaging, bayesian inference and more.
 
@@ -77,9 +79,9 @@ We can find claims about marginalization being at the core of Bayesian statistic
 
 The frequentist approach to machine learning is to *optimize* a loss function to obtain an optimal setting of the model parameters. An example loss function is cross-entropy, used for classification tasks such as object detection or machine translation. The most commonly used optimization techniques are variations on (stochastic) gradient descent. In SGD the model parameters are iteratively updated in the direction of the steepest descent in loss space. This direction is determined by the gradient of the loss with respect to the parameters. The desired result is that for the same or similar inputs, this new parameter setting causes the output to closer represent the target value. In the case of neural networks, gradients are often computed using a computational trick called backpropagation.
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 4.png){: width="500" }
-
-Gradient Descent in loss space. [Amini et al. (2017)](https://arxiv.org/abs/1805.04829) Figure 2.
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 4.png){: width="500" }  |
+|:--:|
+| *Navigating a loss space in the direction of steepest descent using Gradient Descent. [Amini et al. (2017)](https://arxiv.org/abs/1805.04829) Figure 2.* |
 
 From a probabilistic perspective, frequentists are trying to **maximize** the *likelihood*
 $$p(\mathcal{D}|w, \mathcal{M})$$.
@@ -124,9 +126,10 @@ Now that we understand the Bayesian posterior distribution, how do we actually u
 
 Well, we could simply take the posterior distribution over our parameters for our model $$\mathcal{M}$$ and pick the parameter setting $$\hat{w}$$ that has the highest probability assigned to it (the distribution's mode). This method is called **Maximum A Posteriori**, or **MAP** estimation. But... It would be quite a waste to go through all this effort of computing a proper probability distribution over our parameters only to settle for another point estimate, right? Except, perhaps, when nearly all of the posterior's mass is centered around one point in parameter space. Because MAP provides another point estimate, it is not considered a full Bayesian treatment.
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 5.png){: width="500" }
-
-Maximum A Posteriori (MAP) estimation. [Hero et al. (2008)](http://web.eecs.umich.edu/~hero/Preprints/main_564_15.pdf) Figure 17.
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 5.png){: width="500" } |
+|:--:|
+| *Maximum A Posteriori (MAP) estimation; not a full Bayesian treatment. [Hero et al. (2008)](http://web.eecs.umich.edu/~hero/Preprints/main_564_15.pdf) Figure 17.* |
+||
 
 ### Full Predictive Distribution <a name="Full"></a>
 
@@ -138,9 +141,11 @@ $$p(y|\mathcal{D}, x) = \int p(y|w, x)p(w|\mathcal{D})dw$$
 
 This defines the probability for class label $$y$$ given new input $$x$$ and dataset $$\mathcal{D}$$. To compute the predictive distribution we need to **marginalize** over our parameter settings again! We multiply the posterior probability of each setting $$w$$ with the probability of label $$y$$ given input $$x$$ using parameter setting $$w$$. This is called **Bayesian Model Averaging**, or **BMA**; we take a weighted **average** over all possible **models** (parameter settings in this case). The predictive distribution is the second important place for **marginalization** in Bayesian ML (the first being the posterior computation itself). An intuitive way to visualize a predictive distribution is with a simple regression task like in the Figure below. For a concrete example check out [these slides](http://www.cs.toronto.edu/~radford/csc2541.S11/week1.pdf) (9-21).
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 6.png){: width="500" }
-
-Predictive distribution on a simple regression task. High certainty around observed data points; high uncertainty elsewhere. [Yarin Gal (2015)](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html)
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 6.png){: width="500" } |
+|:--:|
+| |
+| *Predictive distribution on a simple regression task. High certainty around observed data points; high uncertainty elsewhere. [Yarin Gal (2015)](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html)* |
+| |
 
 ### Approximate Predictive Distribution <a name="Approximate"></a>
 
@@ -148,7 +153,7 @@ As we know by now, the integral in the predictive distribution is often intracta
 
 This last method is vaguely reminiscent of something perhaps more familiar to a humble frequentist: deep ensembles. Deep ensembles are formed by combining MLE or MAP re-trained neural networks that are architecturally identical, trained with different parameter initializations. Recall that MLE directly finds a parameter point estimate without specifying a prior, while MAP does. This beautifully ties in with where we left off in the paper! Remember the abstract?
 
-> "We show that deep ensembles provide an effective mechanism for approximate Bayesian marginalization, and propose a related approach that further improves the predictive distribution by marginalizing within basins of attraction".
+> **"We show that deep ensembles provide an effective mechanism for approximate Bayesian marginalization, and propose a related approach that further improves the predictive distribution by marginalizing within basins of attraction".**
 
 Reading the abstract for the second time, the contributions should make a lot more sense. Also, we are now finally steering into Bayesian Deep Learning territory and the paper's contributions!
 
@@ -160,11 +165,11 @@ So why do Bayesian DL at all?
 
 The classic answer is to obtain a **realistic expression of uncertainty**, or *calibration*. A classifier is considered calibrated if the probability (confidence) of a class prediction aligns with its misclassification rate. As said before, this is crucial in real world applications.
 
-> "Neural networks are often miscalibrated in the sense that their predictions are typically overconfident"
+> **"Neural networks are often miscalibrated in the sense that their predictions are typically overconfident."**
 
 However, the authors argue that Bayesian model averaging increases **accuracy** as well. According to Section 3.1, the Bayesian perspective is in fact *especially* compelling for neural networks! Because of their large parameter space, neural networks can represent many different solutions, e.g. they are underspecified by the data. This means a Bayesian model average is extremely useful because it combines a diverse range of functional forms, or "perspectives", into one.
 
-> "A neural network can represent many models that are consistent with our observations. By selecting only one, in a classical procedure, we lose uncertainty when the models disagree for a test point."
+> **"A neural network can represent many models that are consistent with our observations. By selecting only one, in a classical procedure, we lose uncertainty when the models disagree for a test point."**
 
 ## Recent Approaches To (Approximate) Bayesian Deep Learning <a name="Recent"></a>
 
@@ -174,9 +179,11 @@ A number of people have recently been trying to combine the advantages of a trad
 
 One popular and conceptually easy approach is [Monte Carlo dropout](https://arxiv.org/pdf/1506.02142.pdf). Recall that dropout is traditionally used as regularization; it provides stochasticity or variation in a neural network by randomly shutting down weights **during training**. It turns out dropout can be reinterpreted as approximate Bayesian inference and applied during testing, which leads to multiple different parameter settings. Sounds a little similar to sampling parameters from a posterior to approximate the predictive distribution, mh?
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 7.png){: width="500" }
-
-Dropout. [Srivastava et al. (2014)](https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf), Figure 1.
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 7.png){: width="600" } |
+|:--:|
+| |
+| *A Figure explaining the original dropout mechanism where some weights are randomly shut down. [Srivastava et al. (2014)](https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf), Figure 1.*  |
+| |
 
 ### Stochastic Weight Averaging - Gaussian (SWAG)
 
@@ -186,7 +193,7 @@ Another line of work follows from [Stochastic Weight Averaging](https://arxiv.or
 
 I have obviously failed to mention at least 99% of the field here (e.g. [KFAC Laplace](https://discovery.ucl.ac.uk/id/eprint/10080902/1/kflaplace.pdf) and [temperature scaling](https://github.com/gpleiss/temperature_scaling) for improved calibration), and picked the examples above in part because they are related to the paper. I'll finish with one last example of a recent **frequentist** (or is it...) alternative to uncertainty approximation. This is an often cited method that shows you can train a deep ensemble and use it to form a predictive distribution, resulting in a well calibrated model. They use a few bells and whistles that I won't go into, such as adversarial training to smoothen the predictive distribution. Check out the paper [here](https://arxiv.org/pdf/1612.01474.pdf).
 
-# Circling Back to the Paper <a name="Circling"></a>
+# Back to the Paper <a name="Circling"></a>
 By now we are more than ready to circle back to the paper and go over its contributions! They should be easier to grasp :)
 
 ## Deep Ensembles are BMA (Section 3) <a name="Ensembles"></a>
@@ -197,7 +204,7 @@ Contrary to how recent literature (myself included) has framed it, Wilson and Iz
 
 This idea of using multiple basins of attraction is important for the next contribution as well: an improved method for approximating predictive distributions. By combining the multiple basins of attraction property that deep ensembles have with the Bayesian treatment in SWAG, the authors propose a best-of-both-worlds solution: **Multi**ple basins of attraction **S**tochastic **W**eight **A**veraging **G**aussian or **MultiSWAG**.
 
-> "MultiSWAG combines multiple independently trained SWAG approximations, to create a mixture of Gaussians approximation to the posterior, with each Gaussian centred on a different basin. We note that MultiSWAG does not require any additional training time over standard deep ensembles."
+> **"MultiSWAG combines multiple independently trained SWAG approximations, to create a mixture of Gaussians approximation to the posterior, with each Gaussian centred on a different basin. We note that MultiSWAG does not require any additional training time over standard deep ensembles."**
 
 I refer you to the paper if you're interested in the nitty gritty details ;)
 
@@ -207,9 +214,9 @@ How can we ever specify a meaningful prior over millions of parameters, I hear y
 
 However, in Section 5 of the paper the authors provide evidence that specifying a vague prior, such as a simple Gaussian might actually not be such a bad idea.
 
-> "Vague Gaussian priors over parameters, when combined with a neural network architecture, induce a distribution over functions with useful inductive biases"
+> **"Vague Gaussian priors over parameters, when combined with a neural network architecture, induce a distribution over functions with useful inductive biases."**
 
-> "The distribution over functions controls the generalization properties of the model; the prior over parameters, in isolation, has no meaning."
+> **"The distribution over functions controls the generalization properties of the model; the prior over parameters, in isolation, has no meaning."**
 
 A vague prior combined with the functional form of a neural network results in a meaningful distribution in function space. The prior itself doesn't matter, but its effect on the resulting predictive distribution does.
 
@@ -223,13 +230,13 @@ $$p(D|\mathcal{M}) > 0$$
 
 The second phenomena is double descent. Double descent is a [recently discovered phenomena](https://openai.com/blog/deep-double-descent/) where bigger models and more data unexpectedly decreases performance.
 
-![Cool image](/img/posts/bayesian-dl-images/Untitled 8.png){: width="500" }
-
-Figure taken from an [OpenAI blogpost](https://openai.com/blog/deep-double-descent/) explaining Deep Double Descent
+| ![Cool image](/img/posts/bayesian-dl-images/Untitled 8.png){: width="500" } |
+|:--:|
+| *This Figure is taken from [this](https://openai.com/blog/deep-double-descent/) OpenAI blogpost that explains Deep Double Descent* |
 
 Wilson and Izmailov find that models with SGD suffer from double descent, but that SWAG reduces it. More importantly, both MultiSWAG as well as deep ensembles completely mitigate the double descent phenomena! This is in line with their previously discussed claim that
 
-> "Deep ensembles provide a better approximation to the Bayesian predictive distribution than conventional single-basin Bayesian marginalization procedures"
+> **"Deep ensembles provide a better approximation to the Bayesian predictive distribution than conventional single-basin Bayesian marginalization procedures."**
 
 and highlights the importance of marginalization over multiple modes of the posterior.
 
