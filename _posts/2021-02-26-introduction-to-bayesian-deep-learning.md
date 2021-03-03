@@ -2,7 +2,7 @@
 usemathjax: true
 layout: post
 title: "A Comprehensive Introduction to Bayesian Deep Learning"
-subtitle: "Bridging the Gap Between the Basics and Modern Research"
+subtitle: "Bridging the Gap Between Basics and Modern Research"
 date: 2021-03-01 23:45:13 -0400
 background: /img/posts/bayesian-dl-images/Untitled.png # '/img/posts/01.jpg'
 ---
