@@ -69,7 +69,7 @@ At this point in the introduction, similar to first sentence of the abstract, th
 
 > **"The key distinguishing property of a Bayesian approach is marginalization instead of optimization, where we represent solutions given by all settings of parameters weighted by their posterior probabilities, rather than bet everything on a single setting of parameters."**
 
-The time is ripe to dig into marginalization vs optimalization, and broaden our general understanding of the Bayesian approach. We'll touch on terms like the posterior, prior and predictive distribution, the marginal likelihood and bayesian evidence, bayesian model averaging, bayesian inference and more.
+The time is ripe to dig into marginalization vs optimization, and broaden our general understanding of the Bayesian approach. We'll touch on terms like the posterior, prior and predictive distribution, the marginal likelihood and bayesian evidence, bayesian model averaging, bayesian inference and more.
 
 # Back to Basics: The Bayesian Approach <a name="Basics"></a>
 
@@ -102,7 +102,7 @@ We start with specifying a *prior distribution* $$ p(w) $$ over the parameters t
 Then, using our dataset, we can **update** (multiply) our prior belief with the *likelihood*
 $$ p(\mathcal{D}|w) $$. This likelihood is the same quantity we saw in the frequentist approach. It tells us how well the observed data is explained by a specific parameter setting $$w$$. In other words; how good our model is at *fitting* or *generating* that dataset. The likelihood is a function of our parameters $$w$$.
 
-To obtain a valid posterior probability **distribution**, however, the product between the likelihood and the prior must be evaluated for each parameter setting, and normalized. This means **marginalizing** (summing or integrating) over **all** parameter settings. The normalizing constant ic called the *Bayesian (model) evidence* or *marginal likelihood* $$ p(\mathcal{D}) $$.
+To obtain a valid posterior probability **distribution**, however, the product between the likelihood and the prior must be evaluated for each parameter setting, and normalized. This means **marginalizing** (summing or integrating) over **all** parameter settings. The normalizing constant is called the *Bayesian (model) evidence* or *marginal likelihood* $$ p(\mathcal{D}) $$.
 
 These names are quite intuitive as $$p(D)$$ provides **evidence** for how good our model (i.e. how likely the data) is *as a whole*. With "model as a whole" I mean taking into account **all possible** parameter settings. In other words: marginalizing over them. We sometimes explicitly include the model choice
 $$\mathcal{M}$$

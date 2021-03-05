@@ -14,6 +14,11 @@ I wrote my master thesis under the supervision of [Maartje ter Hoeve](https://ma
 
 In the past I have collaborated with [Dieuwke Hupkes](https://dieuwkehupkes.nl/) and [Elia Bruni](https://eliabruni.github.io/) on compositionality in neural networks.
 
+### Teaching & Supervision
+- *2021 - current* - Guido Ansem, MSc AI VU. *Fact preserving text generation*. Co-supervised with Lucas de Haas and Peter Bloem.
+- *2020 – current* - Claartje Barkhof, MSc AI UvA. *Information Flow in VAEs*. Co-supervised with Lucas de Haas, David Stap and Wilker Aziz.
+- *2019 – 2020* - Henning Bartsch, MSc AI UvA. *Neural News Recommendation*. Co-supervised with Lucas de Haas and Maartje ter Hoeve.
+
 ### Industry
 - Research intern at *DPG Media* working on interpretability in transformers for abstractive summarization (master thesis).
 - Research intern at *Infosys* in Bangalore working on robotic navigation in controlled environments.  

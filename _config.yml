@@ -15,6 +15,12 @@ linkedin_username:  joris-baan-669324b3
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
+# SEO settings
+twitter:
+  username: jsbaan
+  card: summary_large_image
+url: www.jorisbaan.nl
+
 # Build settings
 markdown:           kramdown
 paginate:           5
