@@ -8,7 +8,7 @@ background: /img/posts/news-recommendation/newspapers.jpg # '/img/posts/01.jpg'
 ---
 
 
-Originally posted at [Medium](https://dpgmedia-engineering.medium.com/news-recommendation-at-scale-2ce03bbc4692) while working for DPG Media.
+Originally posted at [Medium](https://dpgmedia-engineering.medium.com/news-recommendation-at-scale-2ce03bbc4692).
 
 # Introduction
 **With roughly a thousand news articles published by journalists at DPG Media every day, it is a challenge to bring the right articles to the right readers at the right time. An important role of newspapers is to optimally inform readers, balancing between providing news that interests readers, news that provides alternate views or opinions, and news that editors believe readers have to know about. Welcome to the world of news personalization.**

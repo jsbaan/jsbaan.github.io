@@ -6,7 +6,7 @@ subtitle: "Bridging the Gap Between Basics and Modern Research"
 date: 2021-03-01 23:45:13 -0400
 background: /img/posts/bayesian-dl-images/Untitled.png # '/img/posts/01.jpg'
 ---
-
+Originally posted on [TowardsDataScience](https://towardsdatascience.com/a-comprehensive-introduction-to-bayesian-deep-learning-1221d9a051de).
 # Table of Contents
 1. [Preamble](#Preamble)
 2. [Neural Network Generalization](#Introduction)
