@@ -2,8 +2,8 @@ title:              Joris Baan
 email:              jsbaan@gmail.com
 description:        ML Engineer with a passion for research, ML, NLP and much more.
 author:             Joris Baan
-baseurl:            "/"
-url:
+baseurl:
+url:                https://jorisbaan.nl
 
 # Social Profiles
 twitter_username:   jsbaan
@@ -19,7 +19,6 @@ google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 twitter:
   username: jsbaan
   card: summary_large_image
-url: https://www.jorisbaan.nl
 
 # Build settings
 markdown:           kramdown
