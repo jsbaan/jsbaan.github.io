@@ -19,7 +19,7 @@ google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 twitter:
   username: jsbaan
   card: summary_large_image
-url: www.jorisbaan.nl
+url: https://www.jorisbaan.nl
 
 # Build settings
 markdown:           kramdown
