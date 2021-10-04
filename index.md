@@ -3,10 +3,12 @@ layout: home
 background: '/img/bg-index.jpg'
 ---
 
-Welcome! I am Joris and I'm an [ELLIS](https://ellis.eu/) PhD Candidate at the University of Amsterdam.
-I'm working at the intersection of machine learning, language and interpretabilty, 
-and I'm happy to be supervised by [Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/) 
-and [Barbara Plank](https://bplank.github.io/). I used to work at DPG Media as ML Engineer and team lead.
-Check the [about](about) page to learn more about what I do and have done.
+Welcome! I am Joris and I am a PhD Candidate at the [Institute of Logic, Language and Computation](https://www.illc.uva.nl/) at the University of Amsterdam.
+I am working at the intersection of machine learning, language and interpretabilty in the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/). 
 
-I occasionally write blogposts. You can find them down below.
+I am happy to be supervised by [Prof. Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/) 
+and [Prof. Barbara Plank](https://bplank.github.io/) and to be part of the [ELLIS](https://ellis.eu/) network. 
+Previously I worked at DPG Media as ML Engineer and team lead.
+Check out the [about](about) page to learn more about what I do and have done.
+
+Occasionally I write blogposts. You can find them down below.
