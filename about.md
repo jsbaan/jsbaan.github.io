@@ -6,7 +6,8 @@ background: '/img/bg-index.jpg'
 ---
 
 I am a PhD Candidate at the Institute for Logic, Language and Computation (ILLC) at the University of Amsterdam. 
-I am supervised by [Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/), who leads the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/), and [Barbara Plank](https://bplank.github.io/) who leads a lab that's part of the IT University of Copenhagen's [NLPnorth Unit](https://nlpnorth.github.io/). Previously I worked at DPG Media as ML Engineer & Team Lead.
+I am supervised by [Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/), who leads the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/), and [Barbara Plank](https://bplank.github.io/) who leads a lab that's part of the IT University of Copenhagen's [NLPnorth Unit](https://nlpnorth.github.io/).
+My PhD is part of [ELLIS](https://ellis.eu/). Previously I worked at DPG Media as ML Engineer & team lead.
 
 
 ### Education
