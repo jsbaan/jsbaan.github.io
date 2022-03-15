@@ -3,12 +3,15 @@ layout: home
 background: '/img/bg-index.jpg'
 ---
 
-Welcome! I am Joris and I am a PhD Candidate at the [Institute of Logic, Language and Computation](https://www.illc.uva.nl/) at the University of Amsterdam.
-My research interests lie at the intersection of machine learning, natural language processing and interpretabilty. I'm part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/). 
+Welcome! I am Joris and I am a PhD Candidate at the [Institute for Logic, Language and Computation](https://www.illc.uva.nl/) at the University of Amsterdam. I'm very happy to be supervised by [Prof. Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/) and [Prof. Barbara Plank](https://bplank.github.io/). My PhD is funded by [ELLIS](https://ellis.eu/). Previously, I worked at DPG Media as ML engineer and team lead.
 
-I am happy to be supervised by [Prof. Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/) 
-and [Prof. Barbara Plank](https://bplank.github.io/) and to be part of the [ELLIS](https://ellis.eu/) network. 
-Previously I worked at DPG Media as ML Engineer and team lead.
-Check out the [about](about) page to learn more about what I do and have done.
+I am broadly interested in understanding why and under what circumstances modern neural networks trained for language tasks work, and how we should interpret their predictions. Recently, I've been interested in uncertainty estimation and calibration as a tool to do that.  
 
-Occasionally I write blogposts. You can find them down below.
+### News
+- **March 2022** - Guest lecture "Introduction to Transformers" to second year Data Science BSc students at the IT University of Copenhagen.
+- **February 2022** - Started a three months research visit at  the [NLPnorth](https://nlpnorth.github.io/) group from the IT University of Copenhagen.
+- **November 2021** - Teaching assistant for NLP 1
+- **October 2021** - Started my PhD at the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in Amsterdam.
+
+### Blogposts
+Occasionally I write blogposts. You can find them below.
