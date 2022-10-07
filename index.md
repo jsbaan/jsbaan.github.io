@@ -8,6 +8,7 @@ Welcome! I am Joris, a second year [ELLIS](https://ellis.eu/) PhD Candidate at t
 I am broadly interested in understanding *when* and *why* modern neural networks trained for language tasks work, and how we should interpret their predictions. Recently, I've been interested in uncertainty estimation and calibration as a tool to do that.  
 
 ### News
+- **Oct 2022** - New paper "Stop Measuring Calibration When Humans Disagree" accepted at EMNLP 2022! Preprint coming soon.
 - **Sept 2022** - Presented a poster at the [ELLIS Machine Learning Symposium](https://ellisalicante.org/eds2022/) in Alicante, Spain. 
 - **April 2022** - Attended [REST-CL](https://sites.google.com/view/rest-cl/) in Barcelona, Spain.
 - **March 2022** - Guest lecture "Introduction to Transformers", second year Data Science BSc students at the IT University of Copenhagen.
