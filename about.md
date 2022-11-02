@@ -17,6 +17,7 @@ background: '/img/bg-index.jpg'
 - Master thesis under supervision of [Maartje ter Hoeve](https://maartjeth.github.io/), [Anne Schuth](https://www.anneschuth.nl/), Marlies van der Wees and [Maarten de Rijke](https://staff.fnwi.uva.nl/m.derijke/) at DPG Media and the [Information and Language Processing Systems](https://ilps.science.uva.nl/) institute. This resulted in two papers.
 
 ### Teaching & Supervision
+- *2022* - PhD teaching assistant for Deep Learning 1, a first year MSc AI course.
 - *2021* - PhD teaching assistant for Natural Language Processing 1, a first year MSc AI course.
 - *2021* - Guido Ansem, MSc AI VU. *Fact preserving text generation*. Co-supervised with Lucas de Haas and Peter Bloem.
 - *2020–2021* - Claartje Barkhof, MSc AI UvA. *Information Flow in VAEs*. Co-supervised with Lucas de Haas, David Stap and Wilker Aziz.

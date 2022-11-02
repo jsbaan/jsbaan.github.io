@@ -6,8 +6,8 @@ background: '/img/bg-index.jpg'
 ---
 You can also find me on [Google Scholar](https://scholar.google.com/citations?user=wYjlvvwAAAAJ&hl=nl&oi=ao).
 
-Stop Measuring Calibration When Humans Disagree    
-***Joris Baan***, *Wilker Aziz, Barbara Plank, Raquel Fernandez*. To appear at EMNLP 2022.
+[Stop Measuring Calibration When Humans Disagree](https://arxiv.org/abs/2210.16133.pdf)    
+***Joris Baan***, *Wilker Aziz, Barbara Plank, Raquel Fernandez*. In Proceedings of the Conference on Empirical Methods in Natural Language Processing, EMNLP 2022.
 
 [Do Transformer Attention Heads Provide Transparency in Abstractive Summarization?](https://arxiv.org/pdf/1907.00570.pdf)    
 ***Joris Baan***, *Maartje ter Hoeve, Marlies van der Wees, Anne Schuth, Maarten de Rijke*. SIGIR Workshop FACTS-IR 2019.
