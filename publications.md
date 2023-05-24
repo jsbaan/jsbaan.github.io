@@ -6,6 +6,9 @@ background: '/img/bg-index.jpg'
 ---
 You can also find me on [Google Scholar](https://scholar.google.com/citations?user=wYjlvvwAAAAJ&hl=nl&oi=ao).
 
+[What Comes Next? Evaluating Uncertainty in Neural Text Generators Against Human Production Variability](https://arxiv.org/abs/2305.11707)
+*Mario Giulianelli*, ***Joris Baan***, *Wilker Aziz, Raquel Fernandez, Barbara Plank*. arXiv 2023.
+
 [Stop Measuring Calibration When Humans Disagree](https://aclanthology.org/2022.emnlp-main.124/)    
 ***Joris Baan***, *Wilker Aziz, Barbara Plank, Raquel Fernandez*. In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pages 1892–1915, Abu Dhabi, United Arab Emirates, 2022. Association for Computational Linguistics.
 
