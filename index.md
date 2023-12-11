@@ -3,16 +3,16 @@ layout: home
 background: '/img/bg-index.jpg'
 ---
 
-Welcome! I am an [ELLIS](https://ellis.eu/) PhD candidate at the University of Amsterdam working with [Wilker Aziz](https://wilkeraziz.github.io/), [Barbara Plank](https://bplank.github.io/) and [Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/).
+I am an [ELLIS](https://ellis.eu/) PhD candidate at the University of Amsterdam working with [Wilker Aziz](https://wilkeraziz.github.io/), [Barbara Plank](https://bplank.github.io/) and [Raquel Fernández](https://staff.fnwi.uva.nl/r.fernandezrovira/). 
 
-I am interested in understanding how large language models represent uncertainty, and if we can disentangle uncertainty in data (for example, underspecified, subjective or ambiguous language) from uncertainty related to the model that we use to capture this data.
+I am interested in understanding how large language models represent uncertainty, and if we can disentangle uncertainty that arises from the data (e.g., underspecified, subjective or ambiguous language) from uncertainty related to a model (e.g., lack of knowledge or reasoning). Ultimately, I think that uncertainty should power better decision-making.
 
-
-
-I am affiliated with the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in Amsterdam, [NLPnorth](https://nlpnorth.github.io/) at ITU in Copenhagen and [MaiNLP](https://mainlp.github.io/) at LMU in Munich. Previously, I was as summer intern at the [Allen Institute for Artificial Intelligence](https://allenai.org/) in Seattle, and spent a few years at DPG Media as an ML engineer and team lead for large scale news recommendation.
+I am part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in Amsterdam and [MaiNLP](https://mainlp.github.io/) at LMU in Munich. Previously, I interned at the [Allen Institute for Artificial Intelligence](https://allenai.org/) in Seattle and spent a few years as ML engineer at DPG Media working on large scale news recommendation.
 
 
 ### News
+- **December 2023** - I presented our ["What Comes Next"](https://arxiv.org/abs/2307.15703) paper as an oral talk at EMNLP in Singapore. 
+- **November 2023** - I am teaching assistant for two master AI courses at the UvA: NLP1 and DL1.
 - **October 2023** - We're organising the First Workshop on Uncertainty-aware NLP (**UncertaiNLP**), co-located with EACL in Malta! Check out the website at https://uncertainlp.github.io/ and consider submitting your work!
 - **October 2023** - One paper accepted at EMNLP (main conference): camera ready coming soon!
 - **August 2023** - New preprint! ["Uncertainty in Natural Language Generation: From Theory to Applications"

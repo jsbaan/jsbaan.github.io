@@ -5,7 +5,8 @@ description: ""
 background: '/img/bg-index.jpg'
 ---
 
-### Industry and Academia
+### Professional experience
+- *2023* Summer intern at the Allen Institute for AI (AI2) in Seattle.
 - *2021 - present -* PhD Candidate at the University of Amsterdam.
 - *2019-2021 -* ML engineer and team lead at *DPG Media*. I worked on responsible news recommendation for major Dutch news titles such as de Volkskrant, het Parool, AD and nu.nl, reaching roughly 10 million users a day.
 - *2019 -* Research intern at *DPG Media* working on interpretability in transformers for abstractive summarization (master thesis).
@@ -17,6 +18,7 @@ background: '/img/bg-index.jpg'
 - Master thesis under supervision of [Maartje ter Hoeve](https://maartjeth.github.io/), [Anne Schuth](https://www.anneschuth.nl/), Marlies van der Wees and [Maarten de Rijke](https://staff.fnwi.uva.nl/m.derijke/) at DPG Media and the [Information and Language Processing Systems](https://ilps.science.uva.nl/) institute. This resulted in two papers.
 
 ### Teaching & Supervision
+- *2023* - PhD teaching assistant for DL1 and NLP1.
 - *2022* - PhD teaching assistant for Deep Learning 1, a first year MSc AI course.
 - *2021* - PhD teaching assistant for Natural Language Processing 1, a first year MSc AI course.
 - *2021* - Guido Ansem, MSc AI VU. *Fact preserving text generation*. Co-supervised with Lucas de Haas and Peter Bloem.
