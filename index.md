@@ -11,7 +11,8 @@ I am part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in A
 
 
 ### News
-- **December 2023** - I presented our ["What Comes Next"](https://arxiv.org/abs/2307.15703) paper as an oral talk at EMNLP in Singapore. 
+- **March 2024** - Check our new EACL-main position paper being presented in Malta: ["Interpreting Predictive Probabilities: Model Confidence or Human Label Variation?"](https://aclanthology.org/2024.eacl-short.24/)
+- **December 2023** - I presented our ["What Comes Next"](https://aclanthology.org/2023.emnlp-main.887/) paper as an oral talk at EMNLP in Singapore. 
 - **November 2023** - I am teaching assistant for two master AI courses at the UvA: NLP1 and DL1.
 - **October 2023** - We're organising the First Workshop on Uncertainty-aware NLP (**UncertaiNLP**), co-located with EACL in Malta! Check out the website at https://uncertainlp.github.io/ and consider submitting your work!
 - **October 2023** - One paper accepted at EMNLP (main conference): camera ready coming soon!
