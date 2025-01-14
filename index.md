@@ -20,15 +20,24 @@ I am part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in A
 ](https://arxiv.org/abs/2307.15703)
 - **July 2023** - Super excited to join AllenAI in Seattle as a research intern to work with Sarah Wiegreffe!
 - **May 2023** - New preprint! ["What Comes Next? Evaluating Uncertainty in Neural Text Generators Against Human Production Variability"](https://arxiv.org/abs/2305.11707)
-- **December 2022** - I am presenting our [EMNLP paper](https://aclanthology.org/2022.emnlp-main.124/) as an oral talk in the interpretability track in Abu Dhabi.
-- **November 2022** - Teaching assistant for the MSc AI course [Deep Learning 1](https://uvadlc.github.io/).
-- **Oct 2022** - New EMNLP paper: Stop Measuring Calibration When Humans Disagree! Find the preprint [here](https://arxiv.org/abs/2210.16133.pdf) and a summary on twitter [here](https://twitter.com/jsbaan/status/1587023453923803137?s=20&t=hObUFX9YtyNWzoqRXtsrGA).
-- **Sept 2022** - Presented a poster at the [ELLIS Machine Learning Symposium](https://ellisalicante.org/eds2022/) in Alicante, Spain. 
-- **April 2022** - Attended [REST-CL](https://sites.google.com/view/rest-cl/) in Barcelona, Spain.
-- **March 2022** - Guest lecture "Introduction to Transformers", second year Data Science BSc students at the IT University of Copenhagen.
-- **February 2022** - Three months research visit in the [NLPnorth](https://nlpnorth.github.io/) group at the IT University of Copenhagen.
-- **November 2021** - Teaching assistant for the MSc AI course NLP 1.
-- **October 2021** - Started my PhD in the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) at the University of Amsterdam.
+
+[//]: # (- **December 2022** - I am presenting our [EMNLP paper]&#40;https://aclanthology.org/2022.emnlp-main.124/&#41; as an oral talk in the interpretability track in Abu Dhabi.)
+
+[//]: # (- **November 2022** - Teaching assistant for the MSc AI course [Deep Learning 1]&#40;https://uvadlc.github.io/&#41;.)
+
+[//]: # (- **Oct 2022** - New EMNLP paper: Stop Measuring Calibration When Humans Disagree! Find the preprint [here]&#40;https://arxiv.org/abs/2210.16133.pdf&#41; and a summary on twitter [here]&#40;https://twitter.com/jsbaan/status/1587023453923803137?s=20&t=hObUFX9YtyNWzoqRXtsrGA&#41;.)
+
+[//]: # (- **Sept 2022** - Presented a poster at the [ELLIS Machine Learning Symposium]&#40;https://ellisalicante.org/eds2022/&#41; in Alicante, Spain. )
+
+[//]: # (- **April 2022** - Attended [REST-CL]&#40;https://sites.google.com/view/rest-cl/&#41; in Barcelona, Spain.)
+
+[//]: # (- **March 2022** - Guest lecture "Introduction to Transformers", second year Data Science BSc students at the IT University of Copenhagen.)
+
+[//]: # (- **February 2022** - Three months research visit in the [NLPnorth]&#40;https://nlpnorth.github.io/&#41; group at the IT University of Copenhagen.)
+
+[//]: # (- **November 2021** - Teaching assistant for the MSc AI course NLP 1.)
+
+[//]: # (- **October 2021** - Started my PhD in the [Dialogue Modeling Group]&#40;https://dmg-illc.github.io/dmg/&#41; at the University of Amsterdam.)
 
 ### Blogposts
 Occasionally I write blogposts. You can find them below.
