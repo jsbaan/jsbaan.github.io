@@ -7,9 +7,9 @@ date: 2025-01-14 9:00:00
 background: /img/posts/ai-app-from-scratch-images/part-2-building-unsplash-image.png
 ---
 # Introduction <a name="1"></a>
-In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of what an AI web app in production looks like. 
+In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of the principles behind an AI web app in production.  
 
-We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl). I reckon the pool of CPU-based LM inference servers can handle at most 50 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget. I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at https://github.com/jsbaan/ai-app-from-scratch.
+We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl).  I reckon the small pool of CPU-based LM inference servers can handle about 10 to 40 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget.  I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at https://github.com/jsbaan/ai-app-from-scratch.
 
 |                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                             |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -320,7 +320,13 @@ Let’s take a look at how our Container Apps they scale. Container Apps can sca
 
 The default scaling rule is a new replica for 10 concurrent HTTP requests. This applies to the UI and the database API. To test whether this scaling rule makes sense, we would have to perform load testing to simulate real user traffic and see what each Container App replica can handle individually. My guess is that individual replicas can handle a lot more concurrent request than 10.
 
-The language model API requires a bit more finetuning. Each replica handles incoming requests sequentially, and I found that the default of 0.5 virtual CPU cores and 1GB memory gives very slow response times: up to 30 seconds for 100 tokens. Increasing vCPU to 2 and memory to 4GB gives much better inference speed, and handles about 10 concurrent requests relatively quickly. I configured the http scaling rule very tightly at 2 concurrent requests, so whenever even 2 users use the app at the same time, the LM API will scale out. With 5 maximum replicas, I think this will allow for roughly 25-50 concurrent users within a 30 second inference speed for our max response length of 100 tokens. With a higher budget, I would increase vCPUs, memory and the max number of replicas, and ultimately move to GPU-based inference (more on that later). 
+### 3.5.1 Scaling language model inference <a name="3-5-1"></a>
+
+The language model API requires a bit more finetuning. Each replica handles incoming requests sequentially, and I found that the default of 0.5 virtual CPU cores and 1GB memory gives very slow response times: up to 30 seconds for generating 128 tokens with a context window of 1024 (these parameters are defined in the LM API’s Dockerfile). 
+
+Increasing vCPU to 2 and memory to 4GB gives much better inference speed, and handles about 10 concurrent requests relatively quickly. I configured the http scaling rule very tightly at 2 concurrent requests, so whenever even 2 users use the app at the same time, the LM API will scale out. 
+
+With 5 maximum replicas, I think this will allow for roughly 10-40 concurrent users, depending on the length of the chat histories. Now, obviously, this is a flimsy demo and not very large-scale. However, I hope it demonstrates the principles of cloud deployment and scaling. With a higher budget, we could increase vCPUs, memory and the number of replicas, or ultimately move to GPU-based inference (more on that later).
 
 ## 3.6 Custom domain name & HTTPS <a name="3-6"></a>
 
