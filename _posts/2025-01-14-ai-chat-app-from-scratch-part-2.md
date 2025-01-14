@@ -1,13 +1,13 @@
 ---
 usemathjax: true
 layout: post
-title: "Design, Build & Deploy an AI Chat App from Scratch"
-subtitle: "Part 2: Cloud Deployment & Scaling"
+title: "Designing, Building & Deploying an AI Chat App from Scratch (Part 2)"
+subtitle: "Cloud Deployment and Scaling"
 date: 2025-01-14 9:00:00
 background: /img/posts/ai-from-scratch-images/part-2-building-unsplash-image.png
 ---
 # Introduction <a name="1"></a>
-In the [previous post](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of what an AI web app in production looks like. 
+In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of what an AI web app in production looks like. 
 
 We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl). I reckon the pool of CPU-based LM inference servers can handle at most 50 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget. I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at https://github.com/jsbaan/ai-app-from-scratch.
 
@@ -23,7 +23,7 @@ Let’s recap how our local app works: A user can start or continue a chat with 
 
 | ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" } |
 |:---------------------------------------------------------------------------------:|
-|            Local architecture of the app. See [part 1](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-1.html) for more details.            
+|            Local architecture of the app. See [part 1](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html) for more details.            
  |
 
 
@@ -392,4 +392,4 @@ I heavily relied on the [Azure docs](https://learn.microsoft.com/en-us/azure/), 
 
 ## AI usage
 
-I experimented a bit more with AI tools compared to [part 1](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-1.html). I used Pycharm’s CoPilot plugin for code completion and had quite some back-and-forth with ChatGPT to learn about the Azure or Kubernetes ecosystem, and to spar about bugs. I double checked everything in the docs and most of the information was solid. Like part 1, I did not use AI to write this post, though I did use ChatGPT to paraphrase some bad-running sentences.
+I experimented a bit more with AI tools compared to [part 1](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html). I used Pycharm’s CoPilot plugin for code completion and had quite some back-and-forth with ChatGPT to learn about the Azure or Kubernetes ecosystem, and to spar about bugs. I double checked everything in the docs and most of the information was solid. Like part 1, I did not use AI to write this post, though I did use ChatGPT to paraphrase some bad-running sentences.

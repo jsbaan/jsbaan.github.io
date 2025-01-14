@@ -1,20 +1,20 @@
 ---
 usemathjax: true
 layout: post
-title: "Design, Build & Deploy an AI Chat App from Scratch"
-subtitle: "Part 1: Microservices Architecture and Local Development"
+title: "Designing, Building & Deploying an AI Chat App from Scratch (Part 1)"
+subtitle: "Microservices Architecture and Local Development"
 date: 2025-01-14 9:00:00
 background: /img/posts/ai-from-scratch-images/part-1-building-unsplash-image.jpeg
 ---
 # Introduction
 The aim of this project is to learn about the fundamentals of modern, scalable web applications by designing, building and deploying an AI-powered chat app from scratch. We won’t use fancy frameworks or commercial platforms like ChatGPT. This will provide a better understanding of how real-world systems work under the hood, and give us full control over the language model, infrastructure, data and costs. The focus will be on engineering, backend and cloud deployment, rather than the language model or a fancy frontend.
 
-This is part 1. We will design and build a cloud-native app with several APIs, a database, private network, reverse proxy, and simple user interface. Everything runs on our local computer. In [part 2](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-2.html), we will deploy our application to a cloud platform like AWS, GCP or Azure with a focus on scalability so actual users can reach it over the internet. Here is a quick demo.
+This is part 1. We will design and build a cloud-native app with several APIs, a database, private network, reverse proxy, and simple user interface. Everything runs on our local computer. In [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html), we will deploy our application to a cloud platform like AWS, GCP or Azure with a focus on scalability so actual users can reach it over the internet. Here is a quick demo.
 
 
 |                                                                                ![](/img/posts/ai-from-scratch-images/chat_demo.gif){: width="700" }                                                                                |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| A quick demo of starting a new chat, coming back to that same chat, or starting another chat. This is the cloud deployment from [part 2](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-2.html) at [chat.jorisbaan.nl](chat.jorisbaan.nl). We will now build the app locally and make it available at localhost. 
+| A quick demo of starting a new chat, coming back to that same chat, or starting another chat. This is the cloud deployment from [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html) at [chat.jorisbaan.nl](chat.jorisbaan.nl). We will now build the app locally and make it available at localhost. 
  |
 
 
@@ -114,7 +114,7 @@ pg_isready -U joris -h localhost -d postgres
 > localhost:5432 - accepting connections
 ```
 
-When we deploy our application in [part 2](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-2.html), we will use a database managed by a cloud provider to make our lives easier and add more security, reliability and scalability. However, setting one up locally like this is useful for local development and, perhaps later on, integration tests.
+When we deploy our application in [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html), we will use a database managed by a cloud provider to make our lives easier and add more security, reliability and scalability. However, setting one up locally like this is useful for local development and, perhaps later on, integration tests.
 
 # 3. Database API <a name="3"></a>
 
@@ -314,7 +314,7 @@ Since the Nginx container is in same private network, we can’t reach it either
 docker run --network chat-net --publish 80:80 --volume $PROJECT_PATH/nginx.conf:/etc/nginx/nginx.conf nginx
 ```
 
-In [part 2](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-2.html) we will see that these gateway servers can also distribute incoming requests over copies of the same containers (load balancing) for scalability; enable secure HTTPS traffic; and do advanced routing and caching. We will use an Azure-managed reverse proxy rather this Nginx container, but I think it’s very useful to understand how they work and how to set one up yourself. It can also be significantly cheaper compared to a managed reverse proxy.
+In [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html) we will see that these gateway servers can also distribute incoming requests over copies of the same containers (load balancing) for scalability; enable secure HTTPS traffic; and do advanced routing and caching. We will use an Azure-managed reverse proxy rather this Nginx container, but I think it’s very useful to understand how they work and how to set one up yourself. It can also be significantly cheaper compared to a managed reverse proxy.
 
 # 7. Docker Compose <a name="7"></a>
 
@@ -332,7 +332,7 @@ docker compose up --build
 
 That wraps it up! We built an AI-powered chat web application that runs on our local computer, learning about microservices, REST APIs, FastAPI, Docker (Compose), reverse proxies, PostgreSQL databases, SQLAlchemy, and llama.cpp. We’ve built it with a cloud-native architecture in mind so we can deploy our app without changing a single line of code. 
 
-We will discuss deployment in [part 2](https://jorisbaan.nl/2025/01/14/at-chat-app-from-scratch-part-2.html) and cover Kubernetes, the industry-standard container orchestration tool for large-scale applications across multiple hosts; Azure Container Apps, a serverless platform that abstracts away some of Kubernetes’ complexities; and concepts like load balancing, horizontal scaling, HTTPS, etc.
+We will discuss deployment in [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html) and cover Kubernetes, the industry-standard container orchestration tool for large-scale applications across multiple hosts; Azure Container Apps, a serverless platform that abstracts away some of Kubernetes’ complexities; and concepts like load balancing, horizontal scaling, HTTPS, etc.
 
 # Roadmap
 
