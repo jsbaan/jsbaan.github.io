@@ -151,13 +151,12 @@ If we now send a GET request to our endpoint by visiting http://localhost:8080/h
 
 On to the actual database API. We define four endpoints in [main.py 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/db-api/app/main.py) for creating or fetching chats and messages. You get a nice visual summary of these in the auto-generated docs, see below. The UI will call these endpoints to process user data.
 
-|                                                                                                  ![](/img/posts/ai-app-from-scratch-images/db-api-endpoints){: width="700" }                                                                                                  |
-|:--:|
+|                                                                                                 ![](/img/posts/ai-app-from-scratch-images/db-api-endpoints.png){: width="700" }                                                                                                  |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | A cool feature of FastAPI is that it automatically generates interactive documentation according to the [OpenAPI specification](https://www.openapis.org/) with [Swagger](https://swagger.io/). If the Uvicorn server is running we can find it at http://hostname:port/docs. 
  |
 
 
-A cool feature of FastAPI is that it automatically generates interactive documentation according to the [OpenAPI specification](https://www.openapis.org/) with [Swagger](https://swagger.io/). If the Uvicorn server is running we can find it at `http://hostname:port/docs`.
 
 The first thing we need to do is to connect the database API to the database server. We use [SQLAlchemy](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), a popular Python SQL toolkit and Object-Relational Mapper (ORM) that abstracts away writing manual SQL queries.
 
