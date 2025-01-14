@@ -4,7 +4,7 @@ layout: post
 title: "Designing, Building & Deploying an AI Chat App from Scratch (Part 1)"
 subtitle: "Microservices Architecture and Local Development"
 date: 2025-01-14 9:00:00
-background: /img/posts/ai-from-scratch-images/part-1-building-unsplash-image.jpeg
+background: /img/posts/ai-app-from-scratch-images/part-1-building-unsplash-image.jpeg
 ---
 # Introduction
 The aim of this project is to learn about the fundamentals of modern, scalable web applications by designing, building and deploying an AI-powered chat app from scratch. We won’t use fancy frameworks or commercial platforms like ChatGPT. This will provide a better understanding of how real-world systems work under the hood, and give us full control over the language model, infrastructure, data and costs. The focus will be on engineering, backend and cloud deployment, rather than the language model or a fancy frontend.
@@ -12,13 +12,13 @@ The aim of this project is to learn about the fundamentals of modern, scalable w
 This is part 1. We will design and build a cloud-native app with several APIs, a database, private network, reverse proxy, and simple user interface. Everything runs on our local computer. In [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html), we will deploy our application to a cloud platform like AWS, GCP or Azure with a focus on scalability so actual users can reach it over the internet. Here is a quick demo.
 
 
-|                                                                                ![](/img/posts/ai-from-scratch-images/chat_demo.gif){: width="700" }                                                                                |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                                                                                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                                                                                             |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | A quick demo of starting a new chat, coming back to that same chat, or starting another chat. This is the cloud deployment from [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html) at [chat.jorisbaan.nl](chat.jorisbaan.nl). We will now build the app locally and make it available at localhost. 
  |
 
 
-You can find the codebase at https://github.com/jsbaan/ai-app-from-scratch. Throughout this post I will link to specific lines of code with this hyperlink robot [🤖](https://github.com/jsbaan/ai-app-from-scratch) (try it!)
+You can find the codebase at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch). Throughout this post I will link to specific lines of code with this hyperlink robot [🤖](https://github.com/jsbaan/ai-app-from-scratch) (try it!)
 
 ## Microservices and APIs
 
@@ -37,7 +37,7 @@ Let’s make this more concrete. We want a web page where users can chat with a 
 
 The above architecture diagram shows how a user’s HTTP request to localhost on the left flows through the system. We will discuss and set up each individual service, starting with the backend services on the right. Finally, we discuss communication, networking and container orchestration.  
 
-The structure of this post follows the components in our architecture:
+The structure of this post follows the components in our architecture (click to jump to the section):
 1. [**Language model API**](#1).  A llama.cpp language model inference server running the quantized Qwen2.5-0.5B-Instruct model [🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/lm-api).
 2. [**PostgreSQL database server**](#2). A database that stores chats and messages [🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/db).
 3. [**Database API**](#3). A FastAPI and Uvicorn Python server that queries the PostgreSQL database [🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/db-api).
@@ -243,9 +243,9 @@ To handle user input and interact with the backend (e.g., retrieve chat history 
 
 Endpoints are defined in [main.py 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/chat-ui/app/main.py), HTML templates are in the [app/templates directory 🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/chat-ui/app/templates), and the static CSS file for styling the pages is in the [app/static directory 🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/chat-ui/app/static). FastAPI serves the CSS file at `/static/style.css` so the browser can find it.
 
-|                                                                                      ![](/img/posts/ai-from-scratch-images/ui-endpoints.png){: width="700" }                                                                                      |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Interactive documentation showing the UI's endpoints. 
+| ![](/img/posts/ai-app-from-scratch-images/ui-endpoints.png){: width="700" } |
+|:---------------------------------------------------------------------------:|
+|            Interactive documentation showing the UI's endpoints.            
  |
 
 

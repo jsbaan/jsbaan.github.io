@@ -4,15 +4,15 @@ layout: post
 title: "Designing, Building & Deploying an AI Chat App from Scratch (Part 2)"
 subtitle: "Cloud Deployment and Scaling"
 date: 2025-01-14 9:00:00
-background: /img/posts/ai-from-scratch-images/part-2-building-unsplash-image.png
+background: /img/posts/ai-app-from-scratch-images/part-2-building-unsplash-image.png
 ---
 # Introduction <a name="1"></a>
 In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of what an AI web app in production looks like. 
 
 We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl). I reckon the pool of CPU-based LM inference servers can handle at most 50 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget. I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at https://github.com/jsbaan/ai-app-from-scratch.
 
-|                                                                                ![](/img/posts/ai-from-scratch-images/chat_demo.gif){: width="700" }                                                                                |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                             |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | A quick demo of the app at https://chat.jorisbaan.nl. We start a new chat, come back to that same chat, and start another chat. We will now discuss how this app is deployed and how it scales. 
  | 
 

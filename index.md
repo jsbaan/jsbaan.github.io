@@ -7,7 +7,7 @@ I am an [ELLIS](https://ellis.eu/) PhD candidate at the University of Amsterdam 
 
 I am interested in understanding how large language models represent uncertainty, and if we can disentangle uncertainty that arises from the data (e.g., underspecified, subjective or ambiguous language) from uncertainty related to a model (e.g., lack of knowledge or reasoning). Ultimately, I think that uncertainty should power better decision-making.
 
-I am part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in Amsterdam and [MaiNLP](https://mainlp.github.io/) at LMU in Munich. Previously, I interned at the [Allen Institute for Artificial Intelligence](https://allenai.org/) in Seattle and spent a few years as ML engineer at DPG Media working on large scale news recommendation.
+I am part of the [Dialogue Modeling Group](https://dmg-illc.github.io/dmg/) in Amsterdam and [MaiNLP](https://mainlp.github.io/) at LMU in Munich. Previously, I interned at the [Allen Institute for Artificial Intelligence](https://allenai.org/) in Seattle and spent 2.5 years as ML engineer at DPG Media working on large scale news recommendation.
 
 
 ### News
