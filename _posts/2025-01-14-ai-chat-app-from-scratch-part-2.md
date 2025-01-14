@@ -9,11 +9,11 @@ background: /img/posts/ai-app-from-scratch-images/part-2-building-unsplash-image
 # Introduction <a name="1"></a>
 In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of the principles behind an AI web app in production.  
 
-We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl).  I reckon the small pool of CPU-based LM inference servers can handle about 10 to 40 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget.  I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at https://github.com/jsbaan/ai-app-from-scratch.
+We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl).  I reckon the small pool of CPU-based LM inference servers can handle about 10 to 40 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget.  I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch).
 
 |                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                             |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| A quick demo of the app at https://chat.jorisbaan.nl. We start a new chat, come back to that same chat, and start another chat. We will now discuss how this app is deployed and how it scales. 
+| A quick demo of the app at [https://chat.jorisbaan.nl](https://chat.jorisbaan.nl). We start a new chat, come back to that same chat, and start another chat. We will now discuss how this app is deployed and how it scales. 
  | 
 
 
@@ -388,7 +388,7 @@ The llama.cpp inference engine is good for single-user CPU-based inference. When
 
 # 6. Final thoughts <a name="6"></a>
 
-I hope this project offers a glimpse of what an AI-powered web app in production may looks like. I tried to balance realistic engineering with cutting about every corner to keep it simple, cheap, understandable, and limit my time and compute budget. Sadly, I cannot keep the app live for long since it would quickly cost at least $100/month. If someone can help with requesting Azure credits to keep the app running, let me know!
+I hope this project offers a glimpse of what an AI-powered web app in production may look like. I tried to balance realistic engineering with cutting about every corner to keep it simple, cheap, understandable, and limit my time and compute budget. Sadly, I cannot keep the app live for long since it would quickly cost at least $100/month. If someone can help with requesting Azure credits to keep the app running, let me know!
 
 Some thoughts about using managed services: Although Azure Container Apps abstracts away some of the Kubernetes complexity, it’s still extremely useful to have an understanding of the lower-level Kubernetes concepts. Invisible, automatically created infrastructure like Public IPs, Load balancers and ingress controllers add unforeseen costs and make it difficult to understand what’s going on. ACA documentation is limited compared to Kubernetes, which can really slow you down. I think cost and limited control are generally the pitfalls of fully managed cloud services, though for this small app I think it was a good choice.
 
