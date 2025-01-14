@@ -3,7 +3,7 @@ usemathjax: true
 layout: post
 title: "Design, Build & Deploy an AI Chat App from Scratch"
 subtitle: "Part 1: Microservices Architecture and Local Development"
-date: 2025-01-14 12:00:00
+date: 2025-01-14 9:00:00
 background: /img/posts/ai-from-scratch-images/part-1-building-unsplash-image.jpeg
 ---
 # Introduction

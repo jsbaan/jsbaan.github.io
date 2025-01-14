@@ -3,7 +3,7 @@ usemathjax: true
 layout: post
 title: "Design, Build & Deploy an AI Chat App from Scratch"
 subtitle: "Part 2: Cloud Deployment & Scaling"
-date: 2025-01-14 12:00:00
+date: 2025-01-14 9:00:00
 background: /img/posts/ai-from-scratch-images/part-2-building-unsplash-image.png
 ---
 # Introduction <a name="1"></a>
