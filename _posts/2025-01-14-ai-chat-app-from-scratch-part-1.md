@@ -7,7 +7,7 @@ date: 2025-01-14 9:00:00
 background: /img/posts/ai-app-from-scratch-images/part-1-building-unsplash-image.jpeg
 ---
 # Introduction
-The aim of this project is to learn about the fundamentals of modern, scalable web applications by designing, building and deploying an AI-powered chat app from scratch. We won’t use fancy frameworks or commercial platforms like ChatGPT. This will provide a better understanding of how real-world systems work under the hood, and give us full control over the language model, infrastructure, data and costs. The focus will be on engineering, backend and cloud deployment, rather than the language model or a fancy frontend.
+The aim of this project is to learn about the fundamentals of modern, scalable web applications by designing, building and deploying an AI-powered chat app from scratch. We won’t use fancy frameworks or commercial platforms like ChatGPT. This will provide a better understanding of how real-world systems may work under the hood, and give us full control over the language model, infrastructure, data and costs. The focus will be on engineering, backend and cloud deployment, rather than the language model or a fancy frontend.
 
 This is part 1. We will design and build a cloud-native app with several APIs, a database, private network, reverse proxy, and simple user interface with sessions. Everything runs on our local computer. In [part 2](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-2.html), we will deploy our application to a cloud platform like AWS, GCP or Azure with a focus on scalability so actual users can reach it over the internet. Here is a quick demo.
 
@@ -27,7 +27,7 @@ Modern web applications are often built using microservices - small, independent
 You can think of a REST API as the interface that defines how to interact with a service by defining *endpoints* - specific URLs that represent the possible resources or actions, formatted like http://hostname:port/endpoint-name. Endpoints, also called paths or routes, are accessed with HTTP requests that can have various types like GET to retrieve data or POST to create data. Parameters can be passed in the URL itself or in the request body or header.
 
 # Architecture
-Let’s make this more concrete. We want a web page where users can chat with a language model and come back to their previous chats. Our architecture will look as follows. 
+Let’s make this more concrete. We want a web page where users can chat with a language model and come back to their previous chats. Our architecture will look like this: 
 
 
 |                   ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" }                   |
@@ -53,7 +53,7 @@ Setting up the actual language model is pretty easy, nicely demonstrating that M
 
 I looked at several inference engines, like [Fastchat with vLLM](https://github.com/lm-sys/FastChat/blob/main/docs/vllm_integration.md) or [Huggingface TGI](https://huggingface.co/docs/text-generation-inference/en/index), but went with [llama.cpp](https://github.com/ggerganov/llama.cpp/tree/master) because it’s popular, fast, lightweight and supports CPU-based inference. Llama.cpp is written in C/C++ and [conveniently provides a Docker image](https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md) with its inference engine and a simple web server that implements the popular [OpenAI API specification](https://github.com/openai/openai-openapi?tab=readme-ov-file). It comes with a basic UI for experimenting, but we’ll build our own UI shortly. 
 
-As for the actual language model, I chose the quantized [Qwen2-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2-0.5B-Instruct-GGUF) model from Alibaba Cloud, whose responses are surprisingly coherent given how small it is.
+As for the actual language model, I chose the quantized [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF) model from Alibaba Cloud, whose responses are surprisingly coherent given how small it is.
 
 ## 1.1 Running the language model API
 

@@ -118,11 +118,11 @@ Here is a diagram of the full cloud architecture for our chat application that c
 
 # 3. Deployment <a name="3"></a>
 
-So, how do we actually create all this? Rather than clicking around in the Azure Portal, infrastructure-as-code tools like [Terraform](https://www.terraform.io/) are best to create and manage cloud resources. However, for simplicity, I will instead use the Azure CLI to create a bash script that deploy our entire application step by step. You can find the full deployment script including environment variables [here 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/azure-deployment/deploy_app.sh). We will go through it step by step now.
+So, how do we actually create all this? Rather than clicking around in the Azure Portal, infrastructure-as-code tools like [Terraform](https://www.terraform.io/) are best to create and manage cloud resources. However, for simplicity, I will instead use the Azure CLI to create a bash script that deploys our entire application step by step. You can find the full deployment script including environment variables [here 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/azure-deployment/deploy_app.sh). We will go through it step by step now.
 
 ## 3.1 Setting up <a name="3-1"></a>
 
-The only thing we need is an Azure account (I’m using a [free education account](https://azure.microsoft.com/en-us/free/students)), a clone of the https://github.com/jsbaan/ai-app-from-scratch, Docker to build and push the container images, and the Azure CLI to start creating cloud resources. 
+We need an Azure account (I’m using a [free education account](https://azure.microsoft.com/en-us/free/students)), a clone of the https://github.com/jsbaan/ai-app-from-scratch repo, Docker to build and push the container images, the [downloaded model](https://github.com/jsbaan/ai-app-from-scratch/blob/main/lm-api/README.md), and the Azure CLI to start creating cloud resources. 
 
 We first create a resource group so our resources are easier to find, manage and delete. The `--location` parameter refers to the physical datacenter we’ll use to deploy our app’s infrastructure. Ideally, it is close to our users. We then create a private virtual network with 256 IP addresses to isolate, secure and connect our database server and Container Apps.
 
@@ -243,7 +243,7 @@ az containerapp env create \
 
 ## 3.4 Azure Container Apps deployment <a name="3-4"></a>
 
-Each Container App needs a Docker image to run. Let’s first setup a Container Registry, and then build all our images locally and push them to the registry. Note that we simply copied the model file into the language model image using its Dockerfile, so we don’t need to mount external storage like we did for [local deployment in part 1](https://github.com/jsbaan/ai-app-from-scratch/blob/main/compose.yaml#L54).
+Each Container App needs a Docker image to run. Let’s first setup a Container Registry, and then build all our images locally and push them to the registry. Note that we simply copied the model file into the language model image using its [Dockerfile](https://github.com/jsbaan/ai-app-from-scratch/blob/main/lm-api/Dockerfile), so we don’t need to mount external storage like we did for [local deployment in part 1](https://github.com/jsbaan/ai-app-from-scratch/blob/main/compose.yaml#L54).
 
 ```bash
 echo "Create container registry (ACR)"
@@ -324,7 +324,7 @@ The default scaling rule creates a new replica whenever an existing replica rece
 
 ### 3.5.1 Scaling language model inference <a name="3-5-1"></a>
 
-Even with our small, quantized model, language model inference requires much more compute than a simple FastAPI app. The inference server handles incoming requests sequentially, and the default Container App resources of 0.5 virtual CPU cores and 1GB memory result in very slow response times: up to 30 seconds for generating 128 tokens with a context window of 1024 (these parameters are defined in the [LM API's Dockerfile](https://github.com/jsbaan/ai-app-from-scratch/blob/main/lm-api/Dockerfile)).
+Even with our small, quantized language model, inference requires much more compute than a simple FastAPI app. The inference server handles incoming requests sequentially, and the default Container App resources of 0.5 virtual CPU cores and 1GB memory result in very slow response times: up to 30 seconds for generating 128 tokens with a context window of 1024 (these parameters are defined in the [LM API's Dockerfile](https://github.com/jsbaan/ai-app-from-scratch/blob/main/lm-api/Dockerfile)).
 
 Increasing vCPU to 2 and memory to 4GB gives much better inference speed, and handles about 10 requests within 30 seconds. I configured the http scaling rule very tightly at 2 concurrent requests, so whenever 2 users chat at the same time, the LM API will scale out.
 
@@ -357,7 +357,7 @@ The public URL for the UI changes whenever I tear down and redeploy an Environme
 
 # 4. Resources & costs overview <a name="4"></a>
 
-Let’s look at an overview of all the Azure resources our app uses. We created most of them ourselves, but Azure also automatically created a Load balancer, Public IP, Private DNS Zone, Network Watcher and Log Analytics workspace. 
+Now that the app is deployed, let’s look at an overview of all the Azure resources it app uses. We created most of them ourselves, but Azure also automatically created a Load balancer, Public IP, Private DNS Zone, Network Watcher and Log Analytics workspace. 
 
 
 | ![](/img/posts/ai-app-from-scratch-images/azure-resources.png){: width="700" } |
@@ -373,12 +373,12 @@ Some resources are free, others are free up to a certain time or compute budget,
 - **PostgreSQL Flexible Server (Burstable B1MS Compute Tier)**: free for 12 months, then at least $13/month.
 - **Container App**: Free for 50 CPU hours/month or 2M requests/month, then $10/month for an App with a single replica, 0.5 vCPUs and 1GB memory. The LM API with 2vCPUs, 4GB memory costs about $50 per month for a single replica.
 
-You can see that the costs of this incredibly small (but seriously scalable) app can quickly add up to hundreds of dollars per month, even without a GPU server to run a stronger language model! That’s the reason why the app probably won’t be up when you’re reading this.
+You can see that the costs of this small (but scalable) app can quickly add up to hundreds of dollars per month, even without a GPU server to run a stronger language model! That’s the reason why the app probably won’t be up when you’re reading this.
 
 It also becomes clear that Azure Container Apps is more expensive then I initially thought: it requires a standard-Tier Load balancer for automatic external ingress, HTTPS and auto-scaling. We could get around this by disabling external ingress and deploying a cheaper alternative - like a VM with a custom reverse proxy, or a basic-Tier Load balancer. Still, a standard-tier Kubernetes cluster would have cost at least $150/month, so ACA can be cheaper at small scale.
 
 # 5. Roadmap <a name="5"></a>
-That's the end of our app! Let’s look at just a few of the many directions to improve our deployment.
+Now, before we wrap up, let’s look at just a few of the many directions to improve this deployment.
 
 **Continuous Integration & Continuous Deployment.** I would set up a CI/CD pipeline that runs unit and integration tests and redeploys the app upon code changes. It might be triggered by a new git commit or merged pull request. This will also make it easier to see when a service isn’t deployed properly. I would also set up monitoring and alerting to be aware of issues quickly (like a crashing Container App instance).
 
@@ -392,7 +392,7 @@ The llama.cpp inference engine is good for single-user CPU-based inference. When
 
 I hope this project offers a glimpse of what an AI-powered web app in production may look like. I tried to balance realistic engineering with cutting about every corner to keep it simple, cheap, understandable, and limit my time and compute budget. Sadly, I cannot keep the app live for long since it would quickly cost at least $100/month. If someone can help with requesting Azure credits to keep the app running, let me know!
 
-Some thoughts about using managed services: Although Azure Container Apps abstracts away some of the Kubernetes complexity, it's still extremely useful to have an understanding of the lower-level Kubernetes concepts. Automatically created invisible infrastructure like Public IPs, Load balancers and ingress controllers add unforeseen costs and make it difficult to understand what's going on. Also, ACA documentation is limited compared to Kubernetes. However, if you know what you're doing, you can set something up very quickly.
+Some closing thoughts about using managed services: Although Azure Container Apps abstracts away some of the Kubernetes complexity, it's still extremely useful to have an understanding of the lower-level Kubernetes concepts. The automatically created invisible infrastructure like Public IPs, Load balancers and ingress controllers add unforeseen costs and make it difficult to understand what's going on. Also, ACA documentation is limited compared to Kubernetes. However, if you know what you're doing, you can set something up very quickly.
 
 # Acknowledgements
 
