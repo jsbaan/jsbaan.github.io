@@ -7,19 +7,21 @@ date: 2025-01-14 9:00:00
 background: /img/posts/ai-app-from-scratch-images/part-2-building-unsplash-image.png
 ---
 # Introduction <a name="1"></a>
-In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. I hope this post will offer a glimpse of the principles behind an AI web app in production.  
+In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html), we built an AI-powered chat application on our local computer using microservices. Our stack included FastAPI, Docker, Postgres, Nginx and llama.cpp. The goal of this post is to learn more about the fundamentals of cloud deployment and scaling by deploying our app to Azure, making it available to real users. We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP.
 
-We’ll use Azure because they offer a [free education account](https://azure.microsoft.com/en-us/free/students), but the process is similar for other platforms like AWS and GCP. Until my Azure credits run out, you can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl).  I reckon the small pool of CPU-based LM inference servers can handle about 10 to 40 concurrent users within about 30 seconds, although we could easily scale to much more with a higher budget.  I give a complete breakdown of our resources and their costs at the end. You can find the entire codebase at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch).
+You can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl). Now, obviously, this is a flimsy demo and not very large-scale, because the costs ramp up very quickly. With the tight scaling limits I configured I reckon it can handle about 10–40 concurrent users until I run out of credits. However, I do hope it demonstrates the principles behind a scalable production system. We could easily scale to many more users with a higher budget. 
+
+I give a complete breakdown of our infrastructure and the costs at the end. The codebase is at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch).
 
 |                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                             |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| A quick demo of the app at [https://chat.jorisbaan.nl](https://chat.jorisbaan.nl). We start a new chat, come back to that same chat, and start another chat. We will now discuss how this app is deployed and how it scales. 
+| A quick demo of the app at [https://chat.jorisbaan.nl](https://chat.jorisbaan.nl). We start a new chat, come back to that same chat, and start another chat. 
  | 
 
 
 ## Recap: local application <a name="1-1"></a>
 
-Let’s recap how our local app works: A user can start or continue a chat with a language model by sending an HTTP request to http://localhost. An Nginx reverse proxy receives and forwards the request to the UI over a private Docker network. The UI stores a session cookie to identify the user, and sends requests to the backend: the language model API that generates text, and the database API that queries the database server. 
+Let’s recap how we built our local app: A user can start or continue a chat with a language model by sending an HTTP request to http://localhost. An Nginx reverse proxy receives and forwards the request to a UI over a private Docker network. The UI stores a session cookie to identify the user, and sends requests to the backend: the language model API that generates text, and the database API that queries the database server. 
 
 | ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" } |
 |:---------------------------------------------------------------------------------:|
@@ -318,15 +320,15 @@ az containerapp create --name $LM_API \
 
 Let’s take a look at how our Container Apps they scale. Container Apps can scale to zero, which means they have zero replicas and stop running (and stop incurring costs). This is a feature of the serverless paradigm, where infrastructure is provisioned on demand. [The invisible Envoy proxy handles scaling](https://techcommunity.microsoft.com/blog/startupsatmicrosoftblog/from-chaos-to-clarity-simplifying-your-networking-with-azure-container-apps/4034625) based on triggers, like concurrent HTTP requests. Spawning new replicas may take some time, which is called cold-start. We set the minimum number of replicas to 1 to avoid cold starts and the resulting timeout errors for first requests. 
 
-The default scaling rule is a new replica for 10 concurrent HTTP requests. This applies to the UI and the database API. To test whether this scaling rule makes sense, we would have to perform load testing to simulate real user traffic and see what each Container App replica can handle individually. My guess is that individual replicas can handle a lot more concurrent request than 10.
+The default scaling rule creates a new replica whenever an existing replica receives 10 concurrent HTTP requests. This applies to the UI and the database API. To test whether this scaling rule makes sense, we would have to perform load testing to simulate real user traffic and see what each Container App replica can handle individually. My guess is that they can handle a lot more concurrent request than 10, and we could relax the rule.
 
 ### 3.5.1 Scaling language model inference <a name="3-5-1"></a>
 
-The language model API requires a bit more finetuning. Each replica handles incoming requests sequentially, and I found that the default of 0.5 virtual CPU cores and 1GB memory gives very slow response times: up to 30 seconds for generating 128 tokens with a context window of 1024 (these parameters are defined in the LM API’s Dockerfile). 
+Even with our small, quantized model, language model inference requires much more compute than a simple FastAPI app. The inference server handles incoming requests sequentially, and the default Container App resources of 0.5 virtual CPU cores and 1GB memory result in very slow response times: up to 30 seconds for generating 128 tokens with a context window of 1024 (these parameters are defined in the [LM API's Dockerfile](https://github.com/jsbaan/ai-app-from-scratch/blob/main/lm-api/Dockerfile)).
 
-Increasing vCPU to 2 and memory to 4GB gives much better inference speed, and handles about 10 concurrent requests relatively quickly. I configured the http scaling rule very tightly at 2 concurrent requests, so whenever even 2 users use the app at the same time, the LM API will scale out. 
+Increasing vCPU to 2 and memory to 4GB gives much better inference speed, and handles about 10 requests within 30 seconds. I configured the http scaling rule very tightly at 2 concurrent requests, so whenever 2 users chat at the same time, the LM API will scale out.
 
-With 5 maximum replicas, I think this will allow for roughly 10-40 concurrent users, depending on the length of the chat histories. Now, obviously, this is a flimsy demo and not very large-scale. However, I hope it demonstrates the principles of cloud deployment and scaling. With a higher budget, we could increase vCPUs, memory and the number of replicas, or ultimately move to GPU-based inference (more on that later).
+With 5 maximum replicas, I think this will allow for roughly 10–40 concurrent users, depending on the length of the chat histories. Now, obviously, this isn't very large-scale, but with a higher budget, we could increase vCPUs, memory and the number of replicas. Ultimately we would need to move to GPU-based inference. More on that later.
 
 ## 3.6 Custom domain name & HTTPS <a name="3-6"></a>
 
@@ -364,33 +366,33 @@ Let’s look at an overview of all the Azure resources our app uses. We created 
  |
 
 
-Some resources are free, others are free up to a certain time or compute budget, which is part of the reason I chose them. The following resources incur the most costs:
+Some resources are free, others are free up to a certain time or compute budget, which is part of the reason I chose them. The following resources incur the highest costs:
 
 - **Load Balancer (standard Tier)**: free for 1 month, then $18/month.
 - **Container Registry (standard Tier):** free for 12 months, then $19/month.
 - **PostgreSQL Flexible Server (Burstable B1MS Compute Tier)**: free for 12 months, then at least $13/month.
-- **Container App**: Free for 50 CPU hours/month or 2M requests/month, then $10/month for an App with a single replica, 0.5 vCPUs and 1GB memory. The LM API with 2vCPUs, 4GB memory and 5 replicas would already cost $250 per month!
+- **Container App**: Free for 50 CPU hours/month or 2M requests/month, then $10/month for an App with a single replica, 0.5 vCPUs and 1GB memory. The LM API with 2vCPUs, 4GB memory costs about $50 per month for a single replica.
 
 You can see that the costs of this incredibly small (but seriously scalable) app can quickly add up to hundreds of dollars per month, even without a GPU server to run a stronger language model! That’s the reason why the app probably won’t be up when you’re reading this.
 
-It also becomes clear that Azure Container Apps is more expensive then I initially thought: it requires a standard-Tier Load balancer for automatic external ingress, HTTPS and auto-scaling. We could get around this by disabling external ingress and deploying a cheaper alternative - like a VM with a custom reverse proxy, or a basic-Tier Load balancer. Still, a standard-tier Kubernetes cluster would have cost at least $150/month, so ACA can be cheaper at this small scale.
+It also becomes clear that Azure Container Apps is more expensive then I initially thought: it requires a standard-Tier Load balancer for automatic external ingress, HTTPS and auto-scaling. We could get around this by disabling external ingress and deploying a cheaper alternative - like a VM with a custom reverse proxy, or a basic-Tier Load balancer. Still, a standard-tier Kubernetes cluster would have cost at least $150/month, so ACA can be cheaper at small scale.
 
 # 5. Roadmap <a name="5"></a>
-Let’s look at just a few of the many directions to improve our deployment.
+That's the end of our app! Let’s look at just a few of the many directions to improve our deployment.
 
 **Continuous Integration & Continuous Deployment.** I would set up a CI/CD pipeline that runs unit and integration tests and redeploys the app upon code changes. It might be triggered by a new git commit or merged pull request. This will also make it easier to see when a service isn’t deployed properly. I would also set up monitoring and alerting to be aware of issues quickly (like a crashing Container App instance).
 
-**Lower latency: the language model server.** I would properly load test the whole app - simulating real-world user traffic - with something like [Locust](https://locust.io/) or [Azure Load Testing](https://azure.microsoft.com/en-us/products/load-testing). Even without load testing, we have an obvious bottleneck: the LM server. Small and quantized as it is, it can still take up quite a while for lengthy answers, and has almost no concurrency. For more users it would be faster and more efficient to run a GPU inference server with a batching mechanism that collects multiple generation requests in a queue - perhaps with [Kafka](https://kafka.apache.org/) - and runs batch inference on chunks.
+**Lower latency: the language model server.** I would load test the whole app - simulating real-world user traffic - with something like [Locust](https://locust.io/) or [Azure Load Testing](https://azure.microsoft.com/en-us/products/load-testing). Even without load testing, we have an obvious bottleneck: the LM server. Small and quantized as it is, it can still take up quite a while for lengthy answers, with no concurrency. For more users it would be faster and more efficient to run a GPU inference server with a batching mechanism that collects multiple generation requests in a queue - perhaps with [Kafka](https://kafka.apache.org/) - and runs batch inference on chunks.
 
 With even more users, we might want several GPU-based LM servers that consume from the same queue. For GPU infrastructure I’d look into Azure Virtual Machines or something more fancy like Azure Machine Learning.
 
-The llama.cpp inference engine is good for single-user CPU-based inference. When moving to a GPU-server, I would look into inference engines more suitable to batch inference, like [vLLM](https://github.com/vllm-project/vllm) or [Huggingface TGI](https://huggingface.co/docs/text-generation-inference/en/index). And, obviously, a better (bigger) model for increased response quality.
+The llama.cpp inference engine is good for single-user CPU-based inference. When moving to a GPU-server, I would look into inference engines more suitable to batch inference, like [vLLM](https://github.com/vllm-project/vllm) or [Huggingface TGI](https://huggingface.co/docs/text-generation-inference/en/index). And, obviously, a better (bigger) model for increased response quality - depending on the use case.
 
 # 6. Final thoughts <a name="6"></a>
 
 I hope this project offers a glimpse of what an AI-powered web app in production may look like. I tried to balance realistic engineering with cutting about every corner to keep it simple, cheap, understandable, and limit my time and compute budget. Sadly, I cannot keep the app live for long since it would quickly cost at least $100/month. If someone can help with requesting Azure credits to keep the app running, let me know!
 
-Some thoughts about using managed services: Although Azure Container Apps abstracts away some of the Kubernetes complexity, it’s still extremely useful to have an understanding of the lower-level Kubernetes concepts. Invisible, automatically created infrastructure like Public IPs, Load balancers and ingress controllers add unforeseen costs and make it difficult to understand what’s going on. ACA documentation is limited compared to Kubernetes, which can really slow you down. I think cost and limited control are generally the pitfalls of fully managed cloud services, though for this small app I think it was a good choice.
+Some thoughts about using managed services: Although Azure Container Apps abstracts away some of the Kubernetes complexity, it's still extremely useful to have an understanding of the lower-level Kubernetes concepts. Automatically created invisible infrastructure like Public IPs, Load balancers and ingress controllers add unforeseen costs and make it difficult to understand what's going on. Also, ACA documentation is limited compared to Kubernetes. However, if you know what you're doing, you can set something up very quickly.
 
 # Acknowledgements
 
@@ -398,4 +400,4 @@ I heavily relied on the [Azure docs](https://learn.microsoft.com/en-us/azure/), 
 
 ## AI usage
 
-I experimented a bit more with AI tools compared to [part 1](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html). I used Pycharm’s CoPilot plugin for code completion and had quite some back-and-forth with ChatGPT to learn about the Azure or Kubernetes ecosystem, and to spar about bugs. I double checked everything in the docs and most of the information was solid. Like part 1, I did not use AI to write this post, though I did use ChatGPT to paraphrase some bad-running sentences.
+I experimented a bit more with AI tools compared to [part 1](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html). I used Pycharm’s CoPilot plugin for code completion and had quite some back-and-forth with ChatGPT to learn about the Azure or Kubernetes ecosystem, and to spar about bugs. I double-checked everything in the docs and most of the information was solid. Like part 1, I did not use AI to write this post, though I did use ChatGPT to paraphrase some bad-running sentences.
