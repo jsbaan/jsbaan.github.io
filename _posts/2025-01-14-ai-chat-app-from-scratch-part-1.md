@@ -30,7 +30,7 @@ You can think of a REST API as the interface that defines how to interact with a
 Let’s make this more concrete. We want a web page where users can chat with a language model and come back to their previous chats. Our architecture will look like this: 
 
 
-|                   ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" }                   |
+|                   ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: .responsive-image }                   |
 |:---------------------------------------------------------------------------------------------------------------------:|
 | Local architecture of the app. Each service runs in its own Docker container and communicates over a private network. 
  |
@@ -151,7 +151,7 @@ If we now send a GET request to our endpoint by visiting http://localhost:8080/h
 
 On to the actual database API. We define four endpoints in [main.py 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/db-api/app/main.py) for creating or fetching chats and messages. You get a nice visual summary of these in the auto-generated docs, see below. The UI will call these endpoints to process user data.
 
-|                                                                                                 ![](/img/posts/ai-app-from-scratch-images/db-api-endpoints.png){: width="700" }                                                                                                  |
+|                                                                                                 ![](/img/posts/ai-app-from-scratch-images/db-api-endpoints.png){: .responsive-image }                                                                                                  |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | A cool feature of FastAPI is that it automatically generates interactive documentation according to the [OpenAPI specification](https://www.openapis.org/) with [Swagger](https://swagger.io/). If the Uvicorn server is running we can find it at http://hostname:port/docs. 
  |
@@ -242,7 +242,7 @@ To handle user input and interact with the backend (e.g., retrieve chat history 
 
 Endpoints are defined in [main.py 🤖](https://github.com/jsbaan/ai-app-from-scratch/blob/main/chat-ui/app/main.py), HTML templates are in the [app/templates directory 🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/chat-ui/app/templates), and the static CSS file for styling the pages is in the [app/static directory 🤖](https://github.com/jsbaan/ai-app-from-scratch/tree/main/chat-ui/app/static). FastAPI serves the CSS file at `/static/style.css` so the browser can find it.
 
-| ![](/img/posts/ai-app-from-scratch-images/ui-endpoints.png){: width="700" } |
+| ![](/img/posts/ai-app-from-scratch-images/ui-endpoints.png){: .responsive-image } |
 |:---------------------------------------------------------------------------:|
 |            Screenshot of the UI's interactive documentation.            
  |
@@ -281,7 +281,7 @@ How do we know the hostnames of the two APIs? We will look networking and commun
 
 Let’s zoom out and take a look at our architecture again. By now, we have four containers: the UI, DB API, LM API, and PostgreSQL database. What’s missing is the network, reverse proxy and container orchestration.
 
-|                                                  ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" }                                                  |
+|                                                  ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: .responsive-image }                                                  |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | Architecture diagram. 
  |

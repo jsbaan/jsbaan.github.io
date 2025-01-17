@@ -13,7 +13,7 @@ You can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaa
 
 I give a complete breakdown of our infrastructure and the costs at the end. The codebase is at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch).
 
-|                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: width="700" }                                                             |
+|                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: .responsive-image }                                                             |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | A quick demo of the app at [https://chat.jorisbaan.nl](https://chat.jorisbaan.nl). We start a new chat, come back to that same chat, and start another chat. 
  | 
@@ -23,7 +23,7 @@ I give a complete breakdown of our infrastructure and the costs at the end. The 
 
 Let’s recap how we built our local app: A user can start or continue a chat with a language model by sending an HTTP request to http://localhost. An Nginx reverse proxy receives and forwards the request to a UI over a private Docker network. The UI stores a session cookie to identify the user, and sends requests to the backend: the language model API that generates text, and the database API that queries the database server. 
 
-| ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: width="700" } |
+| ![](/img/posts/ai-app-from-scratch-images/local_architecture.png){: .responsive-image } |
 |:---------------------------------------------------------------------------------:|
 |            Local architecture of the app. See [part 1](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-part-1.html) for more details.            
  |
@@ -64,7 +64,7 @@ Now, if we want to support even more concurrent request, we could give each cont
 
 This “prism" pattern is important: requests arrive centrally in some server (a **load balancer**) and fan out for parallel processing to multiple other servers (e.g., several identical UI containers)**.**
 
-| ![](/img/posts/ai-app-from-scratch-images/prism.png){: width="700" } |
+| ![](/img/posts/ai-app-from-scratch-images/prism.png){: .responsive-image } |
 |:--------------------------------------------------------------------:|
 |     Image from Unsplash.      
  |
@@ -104,7 +104,7 @@ It’s interesting to note that we literally don’t have to change a single lin
 
 Here is a diagram of the full cloud architecture for our chat application that contains all our Azure resources. Let’s take a high level look at how a user request flows through the system.
 
-| ![](/img/posts/ai-app-from-scratch-images/cloud_architecture.png){: width="700" } |
+| ![](/img/posts/ai-app-from-scratch-images/cloud_architecture.png){: .responsive-image } |
 |:---------------------------------------------------------------------------------:|
 |                Azure architecture diagram.        
  |
@@ -360,7 +360,7 @@ The public URL for the UI changes whenever I tear down and redeploy an Environme
 Now that the app is deployed, let’s look at an overview of all the Azure resources it app uses. We created most of them ourselves, but Azure also automatically created a Load balancer, Public IP, Private DNS Zone, Network Watcher and Log Analytics workspace. 
 
 
-| ![](/img/posts/ai-app-from-scratch-images/azure-resources.png){: width="700" } |
+| ![](/img/posts/ai-app-from-scratch-images/azure-resources.png){: .responsive-image } |
 |:------------------------------------------------------------------------------:|
 |                 Screenshot of all resources from Azure Portal.                 
  |
