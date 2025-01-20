@@ -11,7 +11,7 @@ In the [previous post](https://jorisbaan.nl/2025/01/14/ai-chat-app-from-scratch-
 
 You can check a live demo of the app at [chat.jorisbaan.nl](http://chat.jorisbaan.nl). Now, obviously, this demo isn't very large-scale, because the costs ramp up very quickly. With the tight scaling limits I configured I reckon it can handle about 10–40 concurrent users until I run out of Azure credits. However, I do hope it demonstrates the principles behind a scalable production system. We could easily configure it to scale to many more users with a higher budget. 
 
-I give a complete breakdown of our infrastructure and the costs at the end. The codebase is at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch).
+I give a complete breakdown of our infrastructure and the costs at the end. The codebase is at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch). This post is also published on [TowardsDataScience](https://towardsdatascience.com/designing-building-deploying-an-ai-chat-app-from-scratch-part-2-c75f712eebe5).
 
 |                                                            ![](/img/posts/ai-app-from-scratch-images/chat_demo.gif){: .responsive-image }                                                             |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|

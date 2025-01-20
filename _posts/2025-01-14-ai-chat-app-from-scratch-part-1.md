@@ -18,7 +18,7 @@ This is part 1. We will design and build a cloud-native app with several APIs, a
  |
 
 
-You can find the codebase at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch). Throughout this post I will link to specific lines of code with this hyperlink robot [🤖](https://github.com/jsbaan/ai-app-from-scratch) (try it!)
+You can find the codebase at [https://github.com/jsbaan/ai-app-from-scratch](https://github.com/jsbaan/ai-app-from-scratch). Throughout this post I will link to specific lines of code with this hyperlink robot [🤖](https://github.com/jsbaan/ai-app-from-scratch) (try it!). This post is also published on [TowardsDataScience](https://towardsdatascience.com/designing-building-deploying-an-ai-chat-app-from-scratch-part-1-f1ebf5232d4d).
 
 ## Microservices and APIs
 
