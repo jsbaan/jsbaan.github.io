@@ -1,0 +1,34 @@
+title:              Joris Baan
+email:              j.s.baan@uva.nl
+description:        PhD Candidate Machine Learning and Natural Language Processing
+author:             Joris Baan
+baseurl:
+url:                https://jorisbaan.nl
+
+# Social Profiles
+twitter_username:   jsbaan
+github_username:    jsbaan
+facebook_username:
+instagram_username:
+linkedin_username:  joris-baan-669324b3
+
+# Add your google-analytics ID here to activate google analytics
+google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+
+# SEO settings
+twitter:
+  username: jsbaan
+  card: summary_large_image
+
+# Build settings
+markdown:           kramdown
+paginate:           5
+paginate_path:      "/posts/page:num/"
+# Plugins disabled for local dev
+# plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+  - jekyll-seo-tag
+  - github-pages
+plugins: []
