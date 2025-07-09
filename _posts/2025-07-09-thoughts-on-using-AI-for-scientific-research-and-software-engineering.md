@@ -5,7 +5,7 @@ title: "Thoughts on using AI for scientific research and software engineering"
 date: 2025-07-09 5:00:00
 background: /img/posts/thoughts-on-using-ai-images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg
 ---
-As a PhD candidate doing AI research, and a former ML engineer, I am not sure what to think of the bombardment of new AI models and tools and if or how I should integrate them into my workflow. On the one hand, I am curious and excited to test them out. On the other hand, it’s overwhelming and I feel a certain pressure to use them, and a restlessness about (the future of) my way of working and the field at large.  
+As a PhD candidate doing AI research, and a former ML engineer, I am not sure what to think of the bombardment of new AI models and tools and if or how I should integrate them into my workflow. On the one hand, I am amazed and curious and excited to test them out. On the other hand, it’s overwhelming and I feel a certain pressure to use them, and a restlessness about (the future of) my way of working and the field at large.  
 
 Since AI research is such an incredibly competitive field, it feels like I might put myself at a disadvantage in terms of productivity or even quality, but also by (not) developing the skillset and efficiency of working with AI. Skills that - whether I like it or not - I think are and will increasingly become important for AI researchers and engineers. 
 
