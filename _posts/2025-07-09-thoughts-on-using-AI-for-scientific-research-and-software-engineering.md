@@ -2,7 +2,7 @@
 usemathjax: true
 layout: post
 title: "Thoughts on using AI for scientific research and software engineering"
-date: 2025-01-14 9:00:00
+date: 2025-07-09 7:00:00
 background: /img/posts/thoughts-on-using-ai-images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg
 ---
 As a PhD candidate doing AI research, and a former ML engineer, I am not sure what to think of the bombardment of new AI models and tools and if or how I should integrate them into my workflow. On the one hand, I am curious and excited to test them out. On the other hand, I feel a certain pressure to use them, and a restlessness about (the future of) my way of working and the field at large. 
