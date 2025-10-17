@@ -72,7 +72,7 @@ I guess part of the skill of using a coding agent is to know how and when to use
 
 Does it really make me more meaningfully productive? In this specific case of setting up a new codebase, it did feel that way. 
 
-However, I could be fooling myself. For example, this [study](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers felt more productive using AI but were in fact slower. Perhaps coding agents give a “feeling of productivity” or “reduction of cognitive effort” rather than actually supporting more and faster long-term progress. Or perhaps it’s just the initial learning curve for these kind of tools - it’s hard to say.
+However, I could be fooling myself. For example, this [study](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers felt more productive using AI but were in fact slower. Perhaps coding agents give a “feeling of productivity” or “reduction of cognitive effort” rather than actually supporting more and faster long-term progress. Or perhaps it’s just the initial learning curve for these kind of tools - it’s hard to say. Who knows, maybe it's even about code quality rather than productivity. 
 
 ### Conclusion
 
