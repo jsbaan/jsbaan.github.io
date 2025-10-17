@@ -84,7 +84,9 @@ I think it’s useful and fun as an AI researcher to use and understand these to
 
 I still dislike sending my research code to a commercial company’s servers. Also, it's relatively affordable right now ($20/month), but pricing is bound to go up, which could make over reliance a (financial) problem, and coding agents difficult to access for researchers that can't afford it. And there’s of course the issue of the compute and energy footprint.
 
-I’m still not sure what to think about increasingly autonomous coding agents without a human in the loop, like promises of these “fully autonomous AI scientists” that produce papers accepted at top tier conferences. Right now, coding agents somehow feel both like a radical change in how to write code, but also like just another tool.
+I’m still not sure what to think about increasingly autonomous coding agents without a human in the loop, like promises of these “fully autonomous AI scientists” that produce papers accepted at top tier conferences. 
+
+Right now, coding agents somehow feel both like a radical change in how to write code, but also like just another tool.
 
 |    ![](/img/posts/coding-agents-responsibly-images/claude_cli_implementing.png){: .responsive-image }    |
 |:------------------------------------------------------------------------------:|
