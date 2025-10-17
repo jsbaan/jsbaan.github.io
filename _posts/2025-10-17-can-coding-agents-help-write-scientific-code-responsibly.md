@@ -20,14 +20,16 @@ I started a new codebase from scratch for a new research project and used Claude
 
 The workflow reminds me most of working in a team of software engineers. I first work out a high-level system architecture, potentially brainstorming with Claude, and then refine a new task, feature, bug fix, etc. 
 
-A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or to implement LLM-as-a-judge evaluation with an external API. (Though I would describe tasks to Claude in much more detail.) I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
+A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or LLM-as-a-judge evaluation with an external API. I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
 
-Proper version control is absolutely essential, since you want be able to clearly see any changes and easily revert them. The final step, which I think is really important, is to carefully review each line of code as if it were a pull-request made by a team member. This really makes it feel like my own code. I then either make changes manually or give Claude a list with desired changes. I often let Claude do a first review pass, and check for bugs too.
+Proper version control is absolutely essential, since you want be able to clearly see any changes and easily revert them. The final step, which I think is really important, is to carefully review each line of code as if it were a pull-request made by a team member. This really makes it feel like my own code. I then either make changes manually or give Claude a list with desired changes. I often let Claude do the first review pass and check for bugs. 
+
+The process really feels iterative and interactive rather than just shooting a single prompt, though I guess this is also a matter of style and how much detail you provide initially.
 
 
 | ![](/img/posts/coding-agents-responsibly-images/claude_cli.png){: .responsive-image } |
 |:--------------------------------------------------------------------------------------:|
-|                            The CLI interface of Claude Code. There is another screenshot at the bottom of this post.                            
+|                            The CLI interface of Claude Code. The task I describe is relatively small, but still spans several files and includes various design decisions. I added another screenshot at the bottom of this post.                            
  |
 
 ### Mistakes
