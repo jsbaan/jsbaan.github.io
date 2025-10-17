@@ -20,9 +20,9 @@ I started a new codebase from scratch for a new research project and used Claude
 
 The workflow reminds me most of working in a team of software engineers. I first work out a high-level system architecture, potentially brainstorming with Claude, and then refine a new task, feature, bug fix, etc. 
 
-A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or to implement LLM-as-a-judge evaluation with an external API. (I would describe these to Claude in much more detail.) I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
+A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or to implement LLM-as-a-judge evaluation with an external API. (Though I would describe these to Claude in much more detail.) I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
 
-Proper version control is absolutely essential, since you want be able to clearly see any changes and easily revert them. The final step, which I think is really important, is to carefully review each line of code as if it were a pull-request made by a team member. This really makes it feel like my own code. I then either make changes manually or give Claude a list with desired changes. I often let Claude do a first review pass and check for bugs too.
+Proper version control is absolutely essential, since you want be able to clearly see any changes and easily revert them. The final step, which I think is really important, is to carefully review each line of code as if it were a pull-request made by a team member. This really makes it feel like my own code. I then either make changes manually or give Claude a list with desired changes. I often let Claude do a first review pass, and check for bugs too.
 
 
 | ![](/img/posts/coding-agents-responsibly-images/claude_cli.png){: .responsive-image } |
