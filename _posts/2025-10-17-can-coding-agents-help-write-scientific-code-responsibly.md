@@ -29,7 +29,7 @@ I then carefully review each line of code as if it were a pull-request made by a
 
 | ![](/img/posts/coding-agents-responsibly-images/claude_cli.png){: .responsive-image } |
 |:--------------------------------------------------------------------------------------:|
-|                            The CLI interface of Claude Code                            
+|                            The CLI interface of Claude Code. There is another screenshot at the bottom of this post.                            
  |
 
 ### Mistakes
@@ -80,11 +80,11 @@ However, I could be fooling myself. For example, this [study](https://metr.org/b
 
 So, can coding agents help write scientific code responsibly? I think so, yes. But it’s up to the researcher to carefully design, review, adapt, and own the resulting code. I think you need to be able to write and understand everything yourself to be able to use it responsibly (and effectively) for complex tasks. To be able to recognize good from bad design/architecture/code/tests/etc, and spot mistakes.
 
-I think it’s useful and fun as an AI researcher to use and understand these tools, and at least experiment with them. I will continue to. However, I don’t think, at least right now, that it’s a magic bullet that will suddenly massively increase the quality or quantity of your research.
+I think it’s useful and fun as an AI researcher to use and understand these tools, and at least experiment with them, and I will continue to. However, I don’t think that, at least right now, it’s a magic bullet that will suddenly massively increase the quality or quantity of your research.
 
 I still dislike sending my research code to a commercial company’s servers. Also, it's relatively affordable right now ($20/month), but pricing is bound to go up, which could make over reliance a (financial) problem, and coding agents difficult to access for researchers that can't afford it. And there’s of course the issue of the compute and energy footprint.
 
-I’m still not sure what to think about increasingly autonomous coding agents without a human in the loop, like promises of these “fully autonomous AI scientists” that produce papers accepted at top tier conferences. Right now, coding agents feels both like a radical change in how to write code, but also like just another tool.
+I’m still not sure what to think about increasingly autonomous coding agents without a human in the loop, like promises of these “fully autonomous AI scientists” that produce papers accepted at top tier conferences. Right now, coding agents somehow feel both like a radical change in how to write code, but also like just another tool.
 
 |    ![](/img/posts/coding-agents-responsibly-images/claude_cli_implementing.png){: .responsive-image }    |
 |:------------------------------------------------------------------------------:|
