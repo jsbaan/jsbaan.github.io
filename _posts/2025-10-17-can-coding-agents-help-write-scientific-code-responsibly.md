@@ -29,7 +29,7 @@ The process really feels iterative and interactive rather than just shooting a s
 
 | ![](/img/posts/coding-agents-responsibly-images/claude_cli.png){: .responsive-image } |
 |:--------------------------------------------------------------------------------------:|
-|                            The CLI interface of Claude Code. The task I describe is relatively small, but still spans several files and includes various design decisions. I added another screenshot at the bottom of this post.                            
+|                            The CLI interface of Claude Code. At this point I built a pretty big codebase already. The task I describe is relatively small, but still spans several files and includes various design decisions. I added another screenshot further in the "conversation" at the bottom of this post.                            
  |
 
 ### Mistakes
