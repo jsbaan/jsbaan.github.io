@@ -20,7 +20,7 @@ I started a new codebase from scratch for a new research project and used Claude
 
 The workflow reminds me most of working in a team of software engineers. I first work out a high-level system architecture, potentially brainstorming with Claude, and then refine a new task, feature, bug fix, etc. 
 
-A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or to implement LLM-as-a-judge evaluation with an external API. (Though I would describe these to Claude in much more detail.) I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
+A task shouldn’t be too small (changing a variable name), but also not too big (write or refactoring my entire codebase at once). An example task might be to create a simple generation pipeline or to implement LLM-as-a-judge evaluation with an external API. (Though I would describe tasks to Claude in much more detail.) I then ask Claude to present a plan, iteratively refine it “together”, and let it execute. 
 
 Proper version control is absolutely essential, since you want be able to clearly see any changes and easily revert them. The final step, which I think is really important, is to carefully review each line of code as if it were a pull-request made by a team member. This really makes it feel like my own code. I then either make changes manually or give Claude a list with desired changes. I often let Claude do a first review pass, and check for bugs too.
 
@@ -76,13 +76,11 @@ However, I could be fooling myself. For example, this [study](https://metr.org/b
 
 ### Conclusion
 
-So, can coding agents help write scientific code responsibly? I think so, yes. But it’s up to the researcher to carefully design, review, adapt, and own the resulting code. I think you need to be able to write and understand everything yourself to be able to use it responsibly (and effectively) for complex tasks. To be able to recognize good from bad design/architecture/code/tests/etc, and spot mistakes.
+So, can we, AI researchers, use coding agent tools to help us write scientific code responsibly? I think so, yes. But it’s the responsibility of the researcher to carefully design, review, adapt, and own the resulting code. I think you need to be able to write and understand everything yourself to be able to use it responsibly (and effectively) for complex tasks. To be able to recognize good from bad design/architecture/code/tests/etc, and spot mistakes.
 
 I think it’s useful and fun as an AI researcher to use and understand these tools, and at least experiment with them, and I will continue to. However, I don’t think that, at least right now, it’s a magic bullet that will suddenly massively increase the quality or quantity of your research.
 
 I still dislike sending my research code to a commercial company’s servers. Also, it's relatively affordable right now ($20/month), but pricing is bound to go up, which could make over reliance a (financial) problem, and coding agents difficult to access for researchers that can't afford it. And there’s of course the issue of the compute and energy footprint.
-
-I’m still not sure what to think about increasingly autonomous coding agents without a human in the loop, like promises of these “fully autonomous AI scientists” that produce papers accepted at top tier conferences. 
 
 Right now, coding agents somehow feel both like a radical change in how to write code, but also like just another tool.
 
