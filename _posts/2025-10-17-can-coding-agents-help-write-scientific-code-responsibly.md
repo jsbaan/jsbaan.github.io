@@ -16,13 +16,13 @@ Claude Code simply runs in a terminal window and needs permission to read/write 
 For a new project I started a fresh codebase and used Claude from the start. This felt like a really nice alternative to finding a repo from a published paper - in my experience these can be unreadable, incomplete, and sometimes even buggy. Also, starting from scratch gives me full control over the code and its design.
 
 # Workflow: refine + Claude + code review
-The workflow reminds me most of working in a software engineering team - an analogy I've seen other people use.
+The workflow reminds me most of working in a software engineering team.
 
 I first work out a high-level system architecture, potentially brainstorming with Claude, and then refine a new task: a feature, bug fix, refactor, etc. A task shouldn’t be too small (changing a variable name), but also not too big (writing or refactoring my entire codebase at once). More on that later. An example task might be to create a simple generation pipeline or LLM-as-a-judge evaluation with an external API. 
 
 I then ask Claude to present a plan and iteratively refine it “together”. I can even ask it to check out a new git branch and submit a pull request - just like a team member might. At this point I can go for a walk while Claude gets to work. (Or watch it work in real-time, or even start another Claude instance to work on a different tasks in parallel.)
 
-Now, this next step is really important: I carefully review each line of code as if it were a pull-request made by a team member that I am responsible for merging. This step really makes it feel like my own code. Finally, I either make changes manually or give Claude a list with desired changes. Note how proper version control is absolutely essential, since you want to be able to clearly see the changes and easily revert them. 
+Now, this next step is really important: I carefully review each line of code as if it were a pull-request made by a team member that I am responsible for merging. This step really makes it feel like my own code. It also slows down the process, at least short-term. Finally, I either make changes manually or give Claude a list with desired changes. Note how proper version control is absolutely essential, since you want to be able to clearly see the changes and easily revert them. 
 
 The workflow really feels iterative and interactive, rather than just typing in a single prompt. Although I guess this is also a matter of style and how much context/detail you provide initially.
 
