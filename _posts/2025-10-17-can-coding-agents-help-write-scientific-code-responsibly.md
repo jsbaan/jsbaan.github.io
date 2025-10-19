@@ -8,7 +8,7 @@ background: /img/posts/coding-agents-responsibly-images/marcin-szmigiel-Oc3G2fDY
 
 I’ve been experimenting with Claude Code to write research code for several months now. [When I last wrote about this](https://jorisbaan.nl/2025/07/09/thoughts-on-using-AI-for-scientific-research-and-software-engineering.html), I was worried that I wouldn't feel in control of my own code, and that bugs would creep in. But also for a general decline in my own (coding) expertise, and even in enjoying my work.
 
-To my own surprise, I actually quite liked it - although there is a trade-off. I'll first explain my workflow and then share my overall experience and some thoughts.
+To my own surprise, I actually quite liked it - although there is a trade-off. I'll first explain my workflow so far and then share my overall experience and some thoughts.
 
 ### How it works
 Claude Code simply runs in a terminal window and needs permission to read/write certain files and execute certain shell commands (eg create a new file, run a python script, run a search query, install a package, etc). You can chat in the terminal and see Claude's planning, reasoning, file edits, and executed shell commands in real-time.
