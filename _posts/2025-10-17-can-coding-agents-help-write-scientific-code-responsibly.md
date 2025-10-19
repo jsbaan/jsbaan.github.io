@@ -11,9 +11,9 @@ I’ve been experimenting with Claude Code to write research code for several mo
 To my own surprise, I actually quite liked it - although there is a trade-off. I'll first explain my workflow so far and then share my overall experience and some thoughts.
 
 ### How it works
-Claude Code simply runs in a terminal window and needs permission to read/write certain files and execute certain shell commands (eg create a new file, run a python script, run a search query, install a package, etc). You can chat in the terminal and see Claude's planning, reasoning, file edits, and executed shell commands in real-time.
+Claude Code simply runs in a terminal window and needs permission to read/write certain files and execute certain shell commands (eg create a new file, run a python script, run a search query, install a package, etc). You can chat directly in the terminal and see Claude work in real-time, showing its planning, reasoning, file edits, executed shell commands, etc.
 
-I started a new codebase from scratch and used Claude from the start. This felt like a really nice alternative to finding a related repo from a published paper - in my experience these are often unreadable, incomplete, and sometimes even buggy. Starting from scratch gave me full control over the code and its design.
+For a new project I started a fresh codebase and used Claude from the start. This felt like a really nice alternative to finding a repo from a published paper - in my experience these can be unreadable, incomplete, and sometimes even buggy. Also, starting from scratch gives me full control over the code and its design.
 
 ### Workflow: refine + Claude Code + code review
 
