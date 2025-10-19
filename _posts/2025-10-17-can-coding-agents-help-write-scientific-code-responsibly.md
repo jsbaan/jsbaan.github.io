@@ -23,7 +23,7 @@ I first work out a high-level system architecture, potentially brainstorming wit
 
 I then ask Claude to present a plan and iteratively refine it “together”. I can even ask it to check out a new git branch and submit a pull request - just like a team member might. At this point I can go for a walk while Claude gets to work. (Or watch it work in real-time, or even start another Claude instance to work on a different tasks in parallel.)
 
-Now, this next step is really important: I carefully review each line of code as if it were a pull-request made by a team member that I am responsible for merging. This step really makes it feel like my own code. Finally, I either make changes manually or give Claude a list with desired changes. Note how proper version control is absolutely essential, since you want be able to clearly see the changes and easily revert them. 
+Now, this next step is really important: I carefully review each line of code as if it were a pull-request made by a team member that I am responsible for merging. This step really makes it feel like my own code. Finally, I either make changes manually or give Claude a list with desired changes. Note how proper version control is absolutely essential, since you want to be able to clearly see the changes and easily revert them. 
 
 The workflow really feels iterative and interactive, rather than just typing in a single prompt. Although I guess this is also a matter of style and how much context/detail you provide initially.
 
@@ -42,11 +42,11 @@ Interestingly, because the process is so much easier and faster, I noticed that 
 
 ### Unit and integration tests
 
-After working as an ML engineer I’ve always found it strange that we generally never write tests in NLP/AI research. To some extend this make sense: research code changes rapidly; you’re often writing it alone; writing and maintaining tests is time consuming; and it can be hard to write meaningful tests that mock or run big, stochastic models. Still, I think it’s good practice to include tests.
+After working as an ML engineer I’ve always found it strange that we generally never write tests in NLP/AI research. To some extent this makes sense: research code changes rapidly; you’re often writing it alone; writing and maintaining tests is time consuming; and it can be hard to write meaningful tests that mock or run big, stochastic models. Still, I think it’s good practice to include tests.
 
 Creating - and particularly maintaining - unit/integration tests with Claude Code is so much faster. This gave me more confidence in my codebase. A very cool thing is that, since Claude can run anything, it can run these tests too, iteratively improving its own code similar to how I would work myself.
 
-One caveat: tests still need to be designed and reviewed with care. Just saying “write tests for this script/function often results in a lot of tests that didn’t quite capture what was important to me. Similarly, just saying “fix these failing tests” makes Claude either adapt the test to the new code or vice versa, and the difference can be crucial. 
+One caveat: tests still need to be designed and reviewed with care. Just saying “write tests for this script/function" often results in a lot of tests that didn’t quite capture what was important to me. Similarly, just saying “fix these failing tests” makes Claude either adapt the test to the new code or vice versa, and the difference can be crucial. 
 
 In this sense, tests can also give a false sense of security.
 
