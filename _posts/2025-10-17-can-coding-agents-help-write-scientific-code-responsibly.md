@@ -6,7 +6,7 @@ date: 2025-10-17 5:00:00
 background: /img/posts/coding-agents-responsibly-images/marcin-szmigiel-Oc3G2fDYSWs-unsplash.jpg
 ---
 
-I’ve been experimenting with Claude Code to write research code for several months now. [When I last wrote about this](https://jorisbaan.nl/2025/07/09/thoughts-on-using-AI-for-scientific-research-and-software-engineering.html), I was worried that I wouldn't feel in control of my own code, and that bugs would creep in. But also for a general decline in my own (coding) expertise, and even in enjoying my work.
+I’ve been experimenting with Claude Code to write research code for several months now. [When I last wrote about this](https://jorisbaan.nl/2025/07/09/thoughts-on-using-AI-for-scientific-research-and-software-engineering.html), I was worried that I wouldn't feel in control of my own code, that bugs would creep in, and for a general decline in my own (coding) expertise and even enjoyment.
 
 To my own surprise, I actually quite liked it - although there is a trade-off. I'll first explain my workflow so far and then share my overall experience and some thoughts.
 
@@ -33,7 +33,7 @@ The workflow really feels iterative and interactive, rather than just typing in 
  |
 
 # Mistakes
-Although the code is of really high quality, Claude makes mistakes, as I will undoubtably be mistakes in my own code - at least during development. I think it’s crucial to be able to judge whether Claude’s code is good or bad, and have an intuition for where to expect issues (e.g., complicated indexing logic during batching). 
+Although the code is of really high quality, Claude makes mistakes, as I will undoubtedly make mistakes in my own code - at least during development. I think it’s crucial to be able to judge whether Claude’s code is good or bad, and have an intuition for where to expect issues (e.g., complicated indexing logic during batching). 
 
 I found small ways to steer Claude towards better code, like asking it to review its own code or find bugs, or by linking to a page of official documentation for some framework that I want it to use.
 
