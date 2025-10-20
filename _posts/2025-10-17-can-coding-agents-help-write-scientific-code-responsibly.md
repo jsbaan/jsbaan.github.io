@@ -18,7 +18,7 @@ I started a fresh codebase and used Claude from the start. This felt like a real
 # Workflow: a team member
 The workflow reminds me most of working in a software engineering team.
 
-The first step is working out a high-level system design and architecture, potentially brainstorming with Claude, and then to refine a new task: a feature, bug fix, refactor, etc. A task shouldn’t be too small (changing a variable name), but also not too big (totally refactoring a big complex codebase). but more on that later. An example task might be to create a generation pipeline or LLM-as-a-judge evaluation with an external API. 
+The first step is working out a high-level system design and architecture, potentially brainstorming with Claude, and then to refine a new task: a feature, bug fix, refactor, etc. A task shouldn’t be too small (changing a variable name), but also not too big (totally refactoring a big complex codebase). An example task might be to create a generation pipeline or LLM-as-a-judge evaluation with an external API. 
 
 I then ask Claude to present a plan and iteratively refine it “together”. I can ask it to work on a new git branch and submit a pull request when it's done - just like a team member might. At this point I can go for a walk while Claude gets to work. (Or watch it work in real-time, or even start another Claude instance to work on a different tasks in parallel.). It's really insane how often Claude understands exactly what I mean, even when I'm vague, and how the code is high quality with good design patterns, without having to specify everything in detail.
 
@@ -49,7 +49,7 @@ One caveat: tests still need to be designed and reviewed with care. Just saying 
 In this sense, tests can also give a false sense of security.
 
 # Vibe coding non-crucial tools
-My strategy so far is very hands-on, which I think is (at least for now) important for core research code. I wouldn’t feel comfortable using Claude to write core research code in a codebase that I’m not familiar with, or to create everything at once without breaking it up in smaller tasks that I carefully describe and review.
+My strategy so far is very hands-on, which I think is (at least for now) important for core research code. I wouldn’t feel comfortable using Claude to write core research code in a codebase that I’m not familiar with, or to create everything at once without breaking it up in smaller tasks that I carefully describe and review. Besides, research is iterative anyway and you often end up with something different than you set out to do initially, which makes it hard to specify everything perfectly in the beginning.
 
 I used a different strategy to build a web interface in pure html/css/js to visualise individual records from a dataset with model generations, evaluation metrics, uncertainty metrics, and search and filtering to navigate. I let Claude build and maintain the entire tool through prompting alone - I guess I’d call this vibe coding - without looking at or changing single line of code. It worked remarkably well.
 
