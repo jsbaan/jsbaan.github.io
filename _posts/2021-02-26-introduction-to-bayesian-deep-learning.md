@@ -73,7 +73,7 @@ The time is ripe to dig into marginalization vs optimization, and broaden our ge
 
 # Back to Basics: The Bayesian Approach <a name="Basics"></a>
 
-We can find claims about marginalization being at the core of Bayesian statistics everywhere. Even in Bishop's ML bible [Pattern Recognition and Machine Learning](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf) (Chapter 3.4), but also [here](https://arxiv.org/abs/2001.10995). The opposite to the Bayesian perspective is the frequentist perspective. This is what you encounter in most machine learning literature. It's also easier to grasp. Let's start there.
+We can find claims about marginalization being at the core of Bayesian statistics everywhere. Even in Bishop's ML bible [Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) (Chapter 3.4), but also [here](https://arxiv.org/abs/2001.10995). The opposite to the Bayesian perspective is the frequentist perspective. This is what you encounter in most machine learning literature. It's also easier to grasp. Let's start there.
 
 ## Frequentists <a name="Frequentists"></a>
 
@@ -144,7 +144,7 @@ This defines the probability for class label $$y$$ given new input $$x$$ and dat
 | ![Cool image](/img/posts/bayesian-dl-images/Untitled 6.png){: width="500" } |
 |:--:|
 | |
-| *Predictive distribution on a simple regression task. High certainty around observed data points; high uncertainty elsewhere. [Yarin Gal (2015)](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html)* |
+| *Predictive distribution on a simple regression task. High certainty around observed data points; high uncertainty elsewhere. [Yarin Gal (2015)](https://www.cs.ox.ac.uk/people/yarin.gal/website/blog_3d801aa532c1ce.html)* |
 | |
 
 ### Approximate Predictive Distribution <a name="Approximate"></a>
@@ -186,7 +186,7 @@ One popular and conceptually easy approach is [Monte Carlo dropout](https://arxi
 
 ### Stochastic Weight Averaging - Gaussian (SWAG)
 
-Another line of work follows from [Stochastic Weight Averaging](https://arxiv.org/pdf/1803.05407.pdf) (SWA), an elegant approximation to ensembling that intelligently combines weights of the same network at different stages of training (check out [this](https://towardsdatascience.com/stochastic-weight-averaging-a-new-way-to-get-state-of-the-art-results-in-deep-learning-c639ccf36a) or [this](https://pytorch.org/blog/stochastic-weight-averaging-in-pytorch/) blogpost if you want to know more). [SWA-Gaussian](https://arxiv.org/pdf/1902.02476.pdf) (SWAG) builds on it by approximating the shape (local geometry) of the posterior distribution using simple information provided by SGD. Recall that SGD "moves" through the parameter space looking for a (local) optimum in loss space. To approximate the local geometry of the posterior, they fit a Gaussian distribution to the first and second moment of the SGD iterate. [Moments](https://en.wikipedia.org/wiki/Moment_(mathematics)) describe the shape of a function or distribution, where the zero moment is the the sum, the first moment is the mean, and the second moment is the variance. These fitted Gaussian distributions can then be used for BMA.
+Another line of work follows from [Stochastic Weight Averaging](https://arxiv.org/pdf/1803.05407.pdf) (SWA), an elegant approximation to ensembling that intelligently combines weights of the same network at different stages of training (check out [this](https://medium.com/data-science/stochastic-weight-averaging-a-new-way-to-get-state-of-the-art-results-in-deep-learning-c639ccf36a) or [this](https://pytorch.org/blog/stochastic-weight-averaging-in-pytorch/) blogpost if you want to know more). [SWA-Gaussian](https://arxiv.org/pdf/1902.02476.pdf) (SWAG) builds on it by approximating the shape (local geometry) of the posterior distribution using simple information provided by SGD. Recall that SGD "moves" through the parameter space looking for a (local) optimum in loss space. To approximate the local geometry of the posterior, they fit a Gaussian distribution to the first and second moment of the SGD iterate. [Moments](https://en.wikipedia.org/wiki/Moment_(mathematics)) describe the shape of a function or distribution, where the zero moment is the the sum, the first moment is the mean, and the second moment is the variance. These fitted Gaussian distributions can then be used for BMA.
 
 ### Frequentist Alternatives to Uncertainty Representation
 

@@ -6,7 +6,7 @@ subtitle: "7 Things You Might Not Know About the Transformer"
 date: 2022-03-25 12:00:00
 background: /img/posts/transformer-from-scratch-images/transformer-post-bridge.jpeg
 ---
-Originally posted on [TowardsDataScience](https://towardsdatascience.com/7-things-you-didnt-know-about-the-transformer-a70d93ced6b2).
+Originally posted on [TowardsDataScience](https://medium.com/data-science/7-things-you-didnt-know-about-the-transformer-a70d93ced6b2).
 
 ## Introduction <a name="Introduction"></a>
 To get intimately familiar with the nuts and bolts of transformers I decided to implement the original architecture in the “[Attention is all you need](https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)” paper from scratch. I thought I knew everything there was to know, but to my own surprise, I encountered several unexpected implementation details that made me better understand how everything works under the hood.

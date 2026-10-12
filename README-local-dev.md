@@ -1,43 +1,15 @@
-# 🚀 Local Development Setup (by Claude Code)
-
-## Quick Start
+# Local development
 
 ```bash
 ./serve.sh
 ```
 
-Your site will be available at **http://localhost:4000**
+Then open http://localhost:4000. Pages rebuild and the browser reloads automatically when you save a file (changes to `_config.yml` need a restart).
 
-## Local URLs
+The first run installs gems into `vendor/bundle` (a few minutes); later runs start in seconds.
 
-- **Home**: `http://localhost:4000`
-- **About**: `http://localhost:4000/about.html`
-- **Publications**: `http://localhost:4000/publications.html`
-- **Posts**: `http://localhost:4000/posts/` (or browse from home)
+## How it works
 
-📝 **Note**: Add `.html` extension for pages locally (GitHub Pages uses clean URLs automatically)
-
-## How It Works
-
-- ✅ **No Ruby installation needed** - Uses Docker
-- ✅ **No compilation issues** - Bypasses eventmachine problems completely
-- ✅ **Looks identical to GitHub Pages** - Same content, same styling  
-- ✅ **Fast and reliable** - Builds in ~45 seconds first run, ~15 seconds after
-- ✅ **GitHub Pages deployment unchanged** - Push to deploy as always
-
-## Development Workflow
-
-1. **Edit** your posts, pages, or content
-2. **Run** `./serve.sh` to rebuild and serve  
-3. **View** changes at `http://localhost:4000`
-4. **Test pages** with `.html` extension locally
-5. **Push to GitHub** when ready (clean URLs work automatically)
-
-## What's Fixed
-
-- ✅ **EventMachine compilation issues** - Completely solved with Docker
-- ✅ **Reliable local development** - Simple Python server, no routing complexity
-- ✅ **All content works** - Pages, posts, images, CSS, JS all load correctly
-- ✅ **GitHub deployment unchanged** - Clean URLs work on live site
-
-Press `Ctrl+C` to stop the server
+- The `github-pages` gem in the `Gemfile` pins Jekyll and all plugins to the versions GitHub Pages uses, so the local build matches the live site.
+- Requires Ruby (tested with 3.3.5) and Bundler. GitHub Pages ignores the `Gemfile`, so deployment is unchanged: push to `master`.
+- On macOS, `serve.sh` sets `CPLUS_INCLUDE_PATH` to work around broken C++ headers in some Command Line Tools installs, which otherwise makes the `eventmachine` gem fail to compile.

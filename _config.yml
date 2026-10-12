@@ -30,3 +30,21 @@ plugins:
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
   - jekyll-seo-tag
   - github-pages
+
+# Repo files that shouldn't be published. Listing these replaces Jekyll's
+# defaults, so the usual ones (Gemfile, vendor, node_modules) are repeated.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - bin
+  - serve.sh
+  - README.md
+  - README-local-dev.md
+  - LICENSE
+  - package.json
+  - package-lock.json
+  - gulpfile.js
+  - jekyll-theme-clean-blog.gemspec
+  - screenshot.png

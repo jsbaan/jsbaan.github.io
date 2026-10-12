@@ -10,3 +10,6 @@
   display: block;
   margin: 0 auto;
 }
+// The theme only underlines links inside paragraphs; also underline links in
+// Markdown lists (bare ul/ol, unlike the navbar and footer lists).
+ul:not([class]) a, ol:not([class]) a { text-decoration: underline; }

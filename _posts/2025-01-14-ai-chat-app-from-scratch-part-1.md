@@ -51,7 +51,7 @@ The structure of this post follows the components in our architecture (click to 
 
 Setting up the actual language model is pretty easy, nicely demonstrating that ML engineering is usually more about engineering than ML. Since I want our app to run on a laptop, model inference should be fast and CPU-based with low memory. 
 
-I looked at several inference engines, like [Fastchat with vLLM](https://github.com/lm-sys/FastChat/blob/main/docs/vllm_integration.md) or [Huggingface TGI](https://huggingface.co/docs/text-generation-inference/en/index), but went with [llama.cpp](https://github.com/ggerganov/llama.cpp/tree/master) because it’s popular, fast, lightweight and supports CPU-based inference. Llama.cpp is written in C/C++ and [conveniently provides a Docker image](https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md) with its inference engine and a simple web server that implements the popular [OpenAI API specification](https://github.com/openai/openai-openapi?tab=readme-ov-file). It comes with a basic UI for experimenting, but we’ll build our own UI shortly. 
+I looked at several inference engines, like [Fastchat with vLLM](https://github.com/lm-sys/FastChat/blob/main/docs/vllm_integration.md) or [Huggingface TGI](https://huggingface.co/docs/text-generation-inference/en/index), but went with [llama.cpp](https://github.com/ggerganov/llama.cpp/tree/master) because it’s popular, fast, lightweight and supports CPU-based inference. Llama.cpp is written in C/C++ and [conveniently provides a Docker image](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md) with its inference engine and a simple web server that implements the popular [OpenAI API specification](https://github.com/openai/openai-openapi?tab=readme-ov-file). It comes with a basic UI for experimenting, but we’ll build our own UI shortly. 
 
 As for the actual language model, I chose the quantized [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF) model from Alibaba Cloud, whose responses are surprisingly coherent given how small it is.
 
@@ -120,7 +120,7 @@ When we deploy our application in [part 2](https://jorisbaan.nl/2025/01/14/ai-ch
 
 Databases often have a separate API server sitting in front to control access, enforce extra security, and provide a simple, standardized interface that abstracts away the database’s complexity. 
 
-We will build this API from scratch with [FastAPI](https://fastapi.tiangolo.com/), a modern framework for building fast, production-ready Python APIs. We will run the API with [Uvicorn](https://www.uvicorn.org/), a high-performance Python web server that handles things like network communication and simultaneous requests.
+We will build this API from scratch with [FastAPI](https://fastapi.tiangolo.com/), a modern framework for building fast, production-ready Python APIs. We will run the API with [Uvicorn](https://uvicorn.dev/), a high-performance Python web server that handles things like network communication and simultaneous requests.
 
 ## 3.1 Quick FastAPI example
 

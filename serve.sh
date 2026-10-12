@@ -1,41 +1,17 @@
 #!/bin/bash
+# Build and serve the site locally with the same Jekyll + plugin versions
+# GitHub Pages uses (via the github-pages gem). Gems go into vendor/bundle.
+set -e
+cd "$(dirname "$0")"
 
-# 🚀 Jekyll Development Server (by Claude Code)
-# Fast and reliable Docker-based local development
+# Some macOS Command Line Tools installs ship an incomplete
+# usr/include/c++/v1 that shadows the SDK's C++ headers, which breaks
+# compiling the eventmachine gem ('iostream' file not found).
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CPLUS_INCLUDE_PATH="$(xcrun --show-sdk-path)/usr/include/c++/v1"
+fi
 
-echo "🚀 Starting Jekyll development server..."
-echo "🌐 Site will be available at: http://localhost:4000"
-echo "🛑 Press Ctrl+C to stop"
-echo ""
+bundle config set --local path vendor/bundle
+bundle check > /dev/null || bundle install
 
-# Use a stable Jekyll 4 image and build-then-serve approach
-docker run --rm \
-  --name jekyll-dev \
-  --volume="$PWD:/srv/jekyll" \
-  --publish 4000:4000 \
-  --workdir /srv/jekyll \
-  ruby:3.1-alpine \
-  sh -c "
-    echo '📦 Setting up Jekyll...'
-    apk add --no-cache build-base python3 > /dev/null 2>&1
-    gem install jekyll bundler webrick > /dev/null 2>&1
-    
-    echo '🏗️  Building site...'
-    jekyll build --config _config.yml 2>/dev/null || {
-      echo '⚙️  Trying with local config...'
-      # Copy original config but remove problematic plugins
-      sed 's/plugins:/# Plugins disabled for local dev\n# plugins:/' _config.yml > _config_dev.yml
-      echo 'plugins: []' >> _config_dev.yml
-      # Remove problematic SEO tag
-      sed -i.bak 's/{% seo %}/<!-- SEO disabled for local dev -->/g' _includes/head.html 2>/dev/null || true
-      jekyll build --config _config_dev.yml 2>/dev/null
-      # Restore file
-      mv _includes/head.html.bak _includes/head.html 2>/dev/null || true
-    }
-    
-    echo '✅ Build complete!'
-    echo '🌐 Starting server at http://localhost:4000'
-    echo '📝 Note: Use .html extension for pages (e.g. /about.html)'
-    echo ''
-    cd _site && python3 -m http.server 4000
-  "
+bundle exec jekyll serve --livereload "$@"
